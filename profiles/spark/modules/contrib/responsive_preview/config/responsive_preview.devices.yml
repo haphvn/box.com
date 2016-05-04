@@ -1,0 +1,50 @@
+# References:
+# - http://en.wikipedia.org/wiki/List_of_displays_by_pixel_density
+# - http://www.w3.org/blog/CSS/2012/06/14/unprefix-webkit-device-pixel-ratio/
+# - http://pieroxy.net/blog/2012/10/18/media_features_of_the_most_common_devices.html
+#
+# The device listing and specifications will be updated periodically through
+# minor releases of Drupal.
+
+iphone:
+  label: iPhone 5
+  dimensions:
+    width: 640
+    height: 1136
+    dppx: 2
+  orientation: portrait
+iphone4:
+  label: iPhone 4
+  dimensions:
+    width: 640
+    height: 960
+    dppx: 2
+  orientation: portrait
+ipad:
+  label: iPad
+  dimensions:
+    width: 1536
+    height: 2048
+    dppx: 2
+  orientation: portrait
+nexus4:
+  label: Nexus 4
+  dimensions:
+    width: 768
+    height: 1280
+    dppx: 2
+  orientation: portrait
+nexus7:
+  label: Nexus 7
+  dimensions:
+    width: 800
+    height: 1280
+    dppx: 1.325
+  orientation: portrait
+desktop:
+  label: Typical desktop
+  dimensions:
+    width: 1366
+    height: 768
+    dppx: 1
+  orientation: landscape

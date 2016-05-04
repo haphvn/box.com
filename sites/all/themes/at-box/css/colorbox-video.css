@@ -1,0 +1,62 @@
+body { position: static; overflow: auto;}
+/* .noscroll{ position: fixed; overflow-y:scroll; width: 100%;} */
+.noscroll { overflow-y: scroll; height: 0; }
+.noscroll > .wrapper { overflow: visible; position: fixed; width: 100%; }
+#youtube_container { margin: 0 30px; position: relative; height: 479px; }
+/* Video Controlbar */
+#cboxLoadedContent .video_outer { position: relative; margin: 0px auto; width: 854px; min-height:29px; font-size: 0; /*  height: 479px; */ }
+.custom_control { width: 100%; position: absolute; bottom: 0; background: url('../img/bg-video-control.png') 0 0 repeat-x transparent; height: 29px; z-index: 1000; }
+  .custom_control .btnPlay, .custom_control .btnMute, .custom_control .playerSocial a { display: block; text-indent: -9999em; background: transparent url('../img/video_control.png') 0 0 no-repeat; float: left; width: 20px; margin-left: 15px; cursor: pointer; height: 29px; }
+    .custom_control .btnPlay.playing { background-position: -20px; }
+    .custom_control .btnMute { background-position: -40px 0; }
+    .custom_control .btnMute.muting { background-position: -60px 0; }
+    .custom_control .playerTiming { line-height: 29px; margin-left: 10px; float: left; font-size: 13px; }
+      .custom_control .playerTiming span { font-family: 'proximanova-regular'; font-size: 13px; color: #afafaf; }
+      .custom_control .playerTiming .timingProgress { color: #fff; }
+      .custom_control .playerSocial { position: absolute; top: 0; right: 15px; }
+      .custom_control .playerSocial a { margin-left: 0; }
+      .custom_control .playerSocial a.fb { background-position: -80px 0; }
+      .custom_control .playerSocial a.tw { background-position: -100px 0; }
+  .progressBar { height: 5px; background: #333; margin: 12px 75px 12px 160px; cursor: pointer; position: relative;}
+    .progressBar .progress, .progressBar .buffer { height: 5px; background: #03bffc none 0 0 no-repeat; position: relative; z-index: 2; width: 0; }
+    .progressBar .buffer { background-color: #1f6d86; position: absolute; top: 0; left: 0; z-index: 1; }
+
+
+/*** Cusomize style for colorbox show video ***/
+#colorbox {
+  padding: 30px 0px 25px 0px;
+  background: #fff;
+}
+#cboxWrapper {
+  left: 0px;
+  top: 30px;
+  overflow: visible;
+}
+#cboxContent {
+
+  overflow: visible;
+}
+#cboxClose {
+  display: block;
+  padding: 0;
+  top: -20px;
+  right: 10px;
+  -webkit-user-modify: read-only;
+}
+#cboxLoadedContent { margin-bottom: 0;}
+#cboxBottomLeft,
+#cboxBottomCenter,
+#cboxBottomRight,
+#cboxTopCenter,
+#cboxTopLeft,
+#cboxTopRight,
+#cboxMiddleLeft,
+#cboxMiddleRight { display: none; height: 0; width: 0;}
+
+@media screen and (min-width: 720px) and (max-width: 977px) {
+    .video_outer { width: 640px;}
+    #youtube_container { height:360px; }
+}
+
+/* Title Hack */
+#cboxTitle { height: 0; text-indent: -9999px; }

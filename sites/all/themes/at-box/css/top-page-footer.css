@@ -1,0 +1,172 @@
+a:hover{
+	text-decoration: none;
+}
+
+.content-wrapper{
+	padding-top: 64px;
+	float: left;
+}
+
+.content-wrapper.shadow{
+	background: url('../img/section-bg-shadow.png') no-repeat;
+}
+
+.column.equal{
+	width: 50%;
+}
+
+.column.left{
+	float: left;
+}
+
+.column.right{
+	float: right;
+}
+
+.column-header h2{
+	font-size: 22px; color: #747679;
+	font-family: 'proximanova-regular';
+	margin: 0;
+	font-weight: normal;
+	padding: 0;
+	padding-bottom: 11px;	
+}
+
+.column-header p{
+	font-family:'proximanova-regular';	
+	width: 100%; clear: both;
+	margin: 0;
+	color: #747679;
+	font-size: 15px;
+	font-weight: normal;
+	padding: 0;
+	line-height: 18px;	
+	padding-bottom: 5px;
+}
+.column-body{
+	margin-top: 46px;
+}
+.left-specail-col{
+		margin-top:10px;
+}
+.column-body ul{
+	padding: 0;
+	margin: 0;
+}
+
+.column-body ul li{
+	padding: 0px 0px 0px 27px;
+	margin: 0px;
+	margin-bottom: 16px;
+}
+
+.column-body ul li .ico{
+	float: left;
+	width: 65px;
+	height: 50px;
+	margin-top: 4px;
+}
+
+.column-body ul li .ico-file,.column-body ul li .ico-post{
+	height: 52px;
+}
+
+.column-body .content{
+	font-size: 15px;
+	line-height: 18px;
+	font-family:'proximanova-regular';	
+	display: block;
+	margin-left: 68px;
+	width: auto;
+	color: #828383;
+}
+
+.column-body .content a{
+	font-size: 15px;
+	line-height: 18px;	
+	font-family:'proximanova-regular';	
+	margin: 0;
+	color: #0B2648;
+	display: block;
+}
+
+.section-even .column.left{ width: 54.19223%;}
+.section-even .column.right{ width: 45.80777%;}
+
+.section-odd .column.left{ width: 42.94479%;}
+.section-odd .column.right{ width: 40.8998%;}
+
+.column-body .break-content{
+	float: left;
+  margin-left: -163.3%;
+  margin-top: -52%;
+  width:100%;
+}
+
+.have-background{
+	background: url('../img/bg-scetion-7.png') no-repeat center bottom;
+}
+
+.section7{
+	position: relative;	
+	width: 100%;
+	z-index: 1;
+}
+
+.section7 .background-special{
+	position: absolute;
+	z-index: 1;
+	left: 0px;
+	top: 0px;
+	padding-top: 2px;
+}
+
+.section7 .column{
+	position: relative;
+	z-index: 2;
+}
+
+.section7 .right {
+	padding-top: 55px;
+}
+
+.section7 .left .content{
+	font-size: 14px;
+}
+
+.section7 .right .column-content{
+}
+
+.margin-right-col1{
+	margin-right: 84px;
+}
+
+.margin-left-col1{
+	padding-left: 54px;
+}
+
+/*--- Fix IE7 ---*/
+.ie7 .column-body ul{
+	float: left;
+}
+
+.ie7 .column-body ul li{
+	float: left;
+}
+
+.ie7 .column-body .content{
+	float: left;
+	margin-left: 0px;
+}
+.col-middle-section7{
+	width: 15.03067% ;
+	/*float: left;
+	padding-top: 80px;*/
+	position: absolute;
+	left: 42.94479%;
+	bottom: -84px;
+}
+.section7 .special-col{
+		width: 42.94479%;
+		position: absolute;
+}

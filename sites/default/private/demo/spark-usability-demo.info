@@ -1,0 +1,4 @@
+filename = spark-usability-demo
+description = ""
+modules = block admin_icons breakpoints ckeditor color comment contextual ctools dblog demo demo_reset edit entity every_field field field_sql_storage field_ui file filter gridbuilder help image jquery_update json2 layout libraries list menu module_filter navbar node number options panels panels_ipe path rdf responsive_preview search shortcut simplified_menu_admin spark_demo system taxonomy text update user views_bulk_operations views_ui views admin_views page_manager spark
+version = 1.1

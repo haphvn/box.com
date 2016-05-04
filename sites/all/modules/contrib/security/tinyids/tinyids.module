@@ -1,0 +1,619 @@
+<?php
+/**
+ * @file
+ * Tiny-IDS | A tiny intrusion detection system.
+ */
+
+/**
+ * Implements hook_init().
+ *
+ * Hooks in at drupal's bootstrap and scans all global arrays that can be
+ * populated by user input for XSS, SQL injection and code execution.
+ *
+ * We won't do stuff like merging arrays recursive because data used in one
+ * place could be overwriten by another value in the same place.
+ * As $_REQUEST is a merged array of $_GET, $_POST and $_COOKIE we will
+ * handle those individually, it's unnecessary to check its values again.
+ */
+function tinyids_init() {
+  // Check for detection by-pass permission.
+  if (!user_access('bypass tinyids')) {
+    $report = array();
+    $nesting_level = variable_get('tinyids_global_nesting', 3);
+
+    // Check $_GET.
+    if (variable_get('tinyids_global_get', TRUE)) {
+      $report = array_merge($report, tinyids_scan(@$_GET, array('$_GET'), $nesting_level));
+    }
+    // Check $_POST.
+    if (variable_get('tinyids_global_post', TRUE)) {
+      $report = array_merge($report, tinyids_scan(@$_POST, array('$_POST'), $nesting_level));
+    }
+    // Check $_COOKIE.
+    if (variable_get('tinyids_global_cookie', TRUE)) {
+      $report = array_merge($report, tinyids_scan(@$_COOKIE, array('$_COOKIE'), $nesting_level));
+    }
+    // Check $_SERVER.
+    if (variable_get('tinyids_global_server', TRUE)) {
+      $report = array_merge($report, tinyids_scan(array(
+        // As some values in $_SERVER global can be manipulated
+        // quite easily, we gona check the threatened ones too.
+        @$_SERVER["HTTP_USER_AGENT"],
+        @$_SERVER["HTTP_ACCEPT"],
+        @$_SERVER["HTTP_ACCEPT_ENCODING"],
+        @$_SERVER["HTTP_ACCEPT_LANGUAGE"],
+        @$_SERVER["PHP_SELF"],
+      ), array('$_SERVER'), $nesting_level));
+    }
+
+    // Check whether we've found something.
+    if (!empty($report)) {
+      // Let other modules give the possibility to react on detections and
+      // alter the results we got.
+      drupal_alter('tinyids_report', $report);
+      // If debug mode is set, we'll render and output the results directly.
+      if (variable_get('tinyids_debug', FALSE)) {
+        // Render the report table and print it.
+        $rendered_report = theme('tinyids_report', array('report' => $report));
+        drupal_set_message(t('Tiny-IDS debugging output:') . $rendered_report);
+      }
+      // Now we iterate through the report delete detections with an impact
+      // not reaching the configured sensibility threshold.
+      foreach ($report as $source => $detection) {
+        if ($detection['impact'] < variable_get('tinyids_sensibility', 10)) {
+          unset($report[$source]);
+        }
+      }
+      // Check whether there is still something to react on.
+      if (!empty($report)) {
+        tinyids_react($report);
+      }
+    }
+  }
+}
+
+/**
+ * Scans a value (haystack) for XSS, SQL injection and/or code execution
+ *
+ * @param mixed $haystack
+ *   The value (string or array) to scan.
+ *   (can be an array that will be scanned through by max nesting level).
+ * @param array $context
+ *   Source path to current value processed in haystack (array keys).
+ * @param int $nesting
+ *   Initial call will specify the maximum nesting level.
+ *   Further recoursive calls will be decreased based on maximum.
+ *
+ * @return bool|array
+ *   Will return an array containing result informations on findings,
+ *   FALSE otherwise.
+ */
+function tinyids_scan($haystack, $context, $nesting = 0) {
+  $report = array();
+
+  // Get detection rules (regular expressions).
+  $rules = tinyids_detection_rules();
+
+  // If the current haystack is a string we put it into a new array.
+  // This may looks strange but it helps getting rid of many useless
+  // function calls as we can be quite shure that the haystack always
+  // is an array on the first call.
+  if (is_string($haystack)) {
+    $haystack = array($haystack);
+  }
+  // Lets scan the haystack for malicious needles.
+  if (is_array($haystack)) {
+    // Iterate through it.
+    foreach ($haystack as $key => $value) {
+      $current_context = array_merge($context, array($key));
+
+      // If the value is an array again we recall our self.
+      // But we have to be shure not to exceed max nesting level.
+      if (is_array($value) && $nesting > 0) {
+        $report = array_merge($report, tinyids_scan($value, $current_context, $nesting - 1));
+      }
+
+      // If the value is a string we can scan it directly.
+      elseif (is_string($value)) {
+        // Check whether the value contains more then just alphanumeric stuff.
+        // We can prefilter the most harmless variables here before having a
+        // deeper look on them.
+        if (preg_match('/[^\w\s\/@!?\.]+|(?:\.\/)|(?:@@\w+)|(?:\+ADw)/i', $value)) {
+          // We'll save the original value.
+          $original_value = $value;
+
+          // We have to do some basic filtering before we can test it.
+          // Remove inline linebreaks.
+          $value = str_replace(array('\r', '\n', '\f', '\t', '\v'), '', $value);
+          // Remove real linebreaks.
+          $value = preg_replace('/(?:\n|\r|\v)/m', '', $value);
+          // Remove comments if contained (could be used for obfuscation).
+          if (preg_match('/(?:\<!-|-->|\/\*|\*\/|\/\/\W*\w+\s*$)/ms', $value)) {
+            $value .= preg_replace(array(
+              '/(?:(?:<!)(?:(?:--(?:[^-]*(?:-[^-]+)*)--\s*)*)(?:>))/ms',
+              '/(?:(?:\/\*\/*[^\/\*]*)+\*\/)/ms',
+            ), ';', $value);
+          }
+          // Normalize different quotes to ".
+          $value = str_replace(array('\'', '`', '´', '’', '‘'), '"', $value);
+          // Make sure harmless quoted strings don't generate false alerts.
+          $value = preg_replace('/^"([^"=\\!><~]+)"$/', '$1', $value);
+
+          // Also escaped payloads should be decoded for further analysis
+          // but this needs more testing.
+          // @TODO
+
+          // We'll collect all findings and count the overall impact per source.
+          $findings = array();
+          $impact = 0;
+
+          // Now we can begin to apply the detection rules on a clean string.
+          foreach ($rules as $expression => $rule_info) {
+            if (preg_match('/' . $expression . '/ms', strtolower($value))) {
+              // If the rule matched, the detection information will be added to
+              // the findings array and the overall impact increased properly.
+              $findings[] = $rule_info;
+              $impact += (int) $rule_info['impact'];
+            }
+          }
+
+          // If there were findings for the current value, we'll save them to
+          // the report. Look at tinyids.api.php for a reports structure.
+          if (!empty($findings)) {
+            // Build the context path string. @TODO is there a better way?
+            $global = array_shift($current_context);
+            $context_path = $global . "['" . implode("']['", $current_context) . "']";
+            $report[$context_path] = array(
+              'value' => $original_value,
+              'filtered_value' => $value,
+              'save_value' => check_plain($original_value),
+              'impact' => $impact,
+              'context' => array_merge(array($global), $current_context),
+              'findings' => $findings,
+            );
+          }
+        }
+      }
+    }
+  }
+
+  return $report;
+}
+
+/**
+ * Collects all intrusion detection rules to apply on scan.
+ *
+ * On a positive result the rule data will be added to the report array.
+ * Other modules may alter/add information by hook_detection_rules_alter().
+ *
+ * Rules (Regular expressions) are mostly based on PHP-IDS (phpids.org)
+ * with some more Drupal specific modifications to enhance performance.
+ *
+ * return array
+ *  An associative array containing regular expressions and rules information.
+ *  The keys of the array are the regular expression, and each corresponding
+ *  value is an associative array with the following key-value pairs:
+ *  - type: An array containing the rule cassification (eg. xss, csrf, sqli).
+ *  - description: A string containing a full description of the finding.
+ *  - impact: How high the impact of a detection is (compare with sensibility).
+ */
+function tinyids_detection_rules() {
+  // If this function was already processed, we return the cached data.
+  $rules = &drupal_static(__FUNCTION__);
+  if (isset($rules)) {
+    return $rules;
+  }
+
+  $rules = array();
+
+  // Add the basic XSS detection rules.
+  if (variable_get('tinyids_xss', TRUE)) {
+    $rules['(?:"[^"]*[^-]?>)|(?:[^\w\s]\s*\/>)|(?:>")'] = array(
+      'type' => array('xss', 'csrf'),
+      'description' => t('HTML breaking injections including whitespace attacks.'),
+      'impact' => 2,
+    );
+    $rules['([^*\s\w,.\/?+-]\s*)?(?<![a-mo-z]\s)(?<![a-z\/_@])(\s*return\s*)?(?:alert|inputbox|showmod(?:al|eless)dialog|showhelp|infinity|isnan|isnull|iterator|msgbox|executeglobal|expression|prompt|write(?:ln)?|confirm|dialog|urn|(?:un)?eval|exec|execscript|tostring|status|execute|window|unescape|navigate|jquery|getscript|extend|prototype)(?(1)[^\w%"]|(?:\s*[^@\s\w%",.:\/+\-]))'] = array(
+      'type' => array('xss', 'csrf'),
+      'description' => t('Possible include or typical script method.'),
+      'impact' => 3,
+    );
+    $rules['(?:=\s*[$\w]\s*[\(\[])|(?:\(\s*(?:this|top|window|self|parent|_?content)\s*\))|(?:src\s*=s*(?:\w+:|\/\/))|(?:\w+\[("\w+"|\w+\|\|))|(?:[\d\W]\|\|[\d\W]|\W=\w+,)|(?:\/\s*\+\s*[a-z"])|(?:=\s*\$[^([]*\()|(?:=\s*\(\s*")'] = array(
+      'type' => array('xss', 'csrf'),
+      'description' => t('Obfuscated JavaScript script injection.'),
+      'impact' => 5,
+    );
+    $rules['(?:\<[\/]?(?:[i]?frame|applet|isindex|marquee|keygen|script|audio|video|input|button|textarea|style|base|body|meta|link|object|embed|param|plaintext|xm\w+|image|im(?:g|port)))'] = array(
+      'type' => array('xss', 'csrf'),
+      'description' => t('Possibly malicious html element including some attributes.'),
+      'impact' => 5,
+    );
+    $rules['(?:\<\w*:?\s(?:[^\>]*)t(?!rong))|(?:\<scri)|(<\w+:\w+)'] = array(
+      'type' => array('xss'),
+      'description' => t('Obfuscated script tags or XML wrapped HTML.'),
+      'impact' => 3,
+    );
+    $rules['(?:,\s*(?:alert|showmodaldialog|eval)\s*,)|(?::\s*eval\s*[^\s])|([^:\s\w,.\/?+-]\s*)?(?<![a-z\/_@])(\s*return\s*)?(?:(?:document\s*\.)?(?:.+\/)?(?:alert|eval|msgbox|showmod(?:al|eless)dialog|showhelp|prompt|confirm|dialog|open))\s*(?:[^.a-z\s\-]|(?:\s*[^\s\w,.@\/+-]))|(?:java[\s\/]*\.[\s\/]*lang)|(?:\w\s*=\s*new\s+\w+)|(?:&\s*\w+\s*\)[^,])|(?:\+[\W\d]*new\s+\w+[\W\d]*\+)|(?:document\.\w)'] = array(
+      'type' => array('xss', 'rce'),
+      'description' => t('Very basic XSS probing.'),
+      'impact' => 2,
+    );
+    $rules['(?:(?:vbs|vbscript|data):.*[,+])|(?:\w+\s*=\W*(?!https?)\w+:)|(jar:\w+:)|(=\s*"?\s*vbs(?:ript)?:)|(language\s*=\s?"?\s*vbs(?:ript)?)|on\w+\s*=\*\w+\-"?'] = array(
+      'type' => array('xss'),
+      'description' => t('URL injection, VBS injection or common URI scheme.'),
+      'impact' => 3,
+    );
+  }
+
+  // Add the SQLi detection rules.
+  if (variable_get('tinyids_sqli', TRUE)) {
+    $rules['(?:union\s*(?:all|distinct|[(!@]*)?\s*[([]*\s*select)|(?:\w+\s+like\s+\")|(?:like\s*"\%)|(?:"\s*like\W*["\d])|(?:"\s*(?:n?and|x?or|not |\|\||\&\&)\s+[\s\w]+=\s*\w+\s*having)|(?:"\s*\*\s*\w+\W+")|(?:"\s*[^?\w\s=.,;)(]+\s*[(@"]*\s*\w+\W+\w)|(?:select\s*[\[\]()\s\w\.,"-]+from)|(?:find_in_set\s*\()'] = array(
+      'type' => array('sqli'),
+      'description' => t('Basic SQL authentication bypass attempt.'),
+      'impact' => 4,
+    );
+    $rules['(?:\d"\s+"\s+\d)|(?:^admin\s*"|(\/\*)+"+\s?(?:--|#|\/\*|{)?)|(?:"\s*or[\w\s-]+\s*[+<>=(),-]\s*[\d"])|(?:"\s*[^\w\s]?=\s*")|(?:"\W*[+=]+\W*")|(?:"\s*[!=|][\d\s!=+-]+.*["(].*$)|(?:"\s*[!=|][\d\s!=]+.*\d+$)|(?:"\s*like\W+[\w"(])|(?:\sis\s*0\W)|(?:where\s[\s\w\.,-]+\s=)|(?:"[<>~]+")'] = array(
+      'type' => array('sqli'),
+      'description' => t('Basic SQL authentication bypass attempt.'),
+      'impact' => 5,
+    );
+    $rules['(?:[\d\W]\s+as\s*["\w]+\s*from)|(?:^[\W\d]+\s*(?:union|select|create|rename|truncate|load|alter|delete|update|insert|desc))|(?:(?:select|create|rename|truncate|load|alter|delete|update|insert|desc)\s+(?:(?:group_)concat|char|load_file)\s?\(?)|(?:end\s*\);)|("\s+regexp\W)|(?:[\s(]load_file\s*\()'] = array(
+      'type' => array('sqli', 'rce'),
+      'description' => t('Concatenated basic SQL injection and SQLLFI attempt.'),
+      'impact' => 5,
+    );
+    $rules['(?:"\s*or\s*"?\d)|(?:\\\\x(?:23|27|3d))|(?:^.?"$)|(?:(?:^["\\\\]*(?:[\d"]+|[^"]+"))+\s*(?:n?and|x?or|not|\|\||\&\&)\s*[\w"[+&!@(),.-])|(?:[^\w\s]\w+\s*[|-]\s*"\s*\w)|(?:@\w+\s+(and|or)\s*["\d]+)|(?:@[\w-]+\s(and|or)\s*[^\w\s])|(?:[^\w\s:]\s*\d\W+[^\w\s]\s*".)|(?:\Winformation_schema|table_name\W)'] = array(
+      'type' => array('sqli'),
+      'description' => t('Classic SQL injection probing.'),
+      'impact' => 4,
+    );
+  }
+
+  // Add the code execution detection rules.
+  if (variable_get('tinyids_rce', TRUE)) {
+    $rules['(?:\sexec\s+xp_cmdshell)|(?:"\s*!\s*["\w])|(?:from\W+information_schema\W)|(?:(?:(?:current_)?user|database|schema|connection_id)\s*\([^\)]*)|(?:";?\s*(?:select|union|having)\s*[^\s])|(?:\wiif\s*\()|(?:exec\s+master\.)|(?:union select @)|(?:union[\w(\s]*select)|(?:select.*\w?user\()|(?:into[\s+]+(?:dump|out)file\s*")'] = array(
+      'type' => array('rce', 'sqli'),
+      'description' => t('Code execution and information gathering attempt.'),
+      'impact' => 4,
+    );
+    $rules['(?:((.)?\/)+(apache((.)?\/)+logs|etc((.)?\/)+httpd((.)?\/)+logs|var((.)?\/)+www((.)?\/)+logs|usr((.)?\/)+local((.)?\/)+apache((.)?\/)+logs|var((.)?\/)+log((.)?\/)+apache|var((.)?\/)+log((.)?\/)+apache2|var((.)?\/)+log))((.)?\/)+(error|access)(.|_)log'] = array(
+      'type' => array('rce'),
+      'description' => t('Code execution by logfile poisoning (local file inclusion).'),
+      'impact' => 4,
+    );
+    $rules['(?:(?:\/|\\\\)?\.+(\/|\\\\)(?:\.+)?)|(?:\w+\.exe\??\s)|(?:;\s*\w+\s*\/[\w*-]+\/)|(?:\d\.\dx\|)|(?:%(?:c0\.|af\.|5c\.))|(?:\/(?:%2e){2})'] = array(
+      'type' => array('rce'),
+      'description' => t('Basic directory and path traversal.'),
+      'impact' => 2,
+    );
+    $rules['(?:%c0%ae\/)|(?:(?:\/|\\\\)(home|conf|usr|etc|proc|opt|s?bin|local|dev|tmp|kern|[br]oot|sys|system|windows|winnt|program|%[a-z_-]{3,}%)(?:\/|\\\\))|(?:(?:\/|\\\\)inetpub|localstart\.asp|boot\.ini)'] = array(
+      'type' => array('rce'),
+      'description' => t('Specific directory and path traversal.'),
+      'impact' => 3,
+    );
+    $rules['(?:\\x[01fe][\db-ce-f])|(?:%[01fe][\db-ce-f])|(?:&#[01fe][\db-ce-f])|(?:\\[01fe][\db-ce-f])|(?:&#x[01fe][\db-ce-f])'] = array(
+      'type' => array('rce'),
+      'description' => t('Found nullbytes or other dangerous characters.'),
+      'impact' => 3,
+    );
+  }
+
+  // Let other modules the possibility to alter default and add new rules.
+  drupal_alter('tinyids_rules', $rules);
+
+  return $rules;
+}
+
+/**
+ * Handles our reaction functionality.
+ *
+ *  - Logging all findings to database.
+ *  - Show a warning to the attacking user.
+ *  - Send an email containing detection information.
+ *  - Triggering our rules event and let rules do stuff.
+ *
+ * @param array $report
+ *   An associative array containing report information about the detections.
+ *   The keys represent the source paths to the suspicous values in the tested
+ *   global array, eg. $_POST['name']. Only detections having an overall impact
+ *   that reaches configured sensibility threshold are passed here.
+ *
+ *   Each one contains an array with the following key/value pairs.
+ *   - value: The original suspicious value (use with care!).
+ *   - filtered_value: The filtered value where all rules were applied on.
+ *   - save_value: The save value you can use as output.
+ *   - impact: The overall impact of all findings on this value.
+ *   - context: The source path to the suspicious value as array.
+ *   - findings: An array of detections found on the value.
+ *     - type: An array containing the cassification (eg. xss, csrf, sqli).
+ *     - description: A string containing a full description of the finding.
+ *     - impact: The impact of the detection rule (compare with sensibility).
+ */
+function tinyids_react($report) {
+  // Render the report and log it to database.
+  $rendered_report = theme('tinyids_report', array('report' => $report));
+  watchdog('tinyids', $rendered_report, NULL, WATCHDOG_WARNING);
+
+  // If set, show a configured warning message to the attacker.
+  if (variable_get('tinyids_warning', TRUE)) {
+    $message = variable_get('tinyids_warning_message', t('Note that an administrator was notified about your intrusion attempt.'));
+    drupal_set_message(check_plain($message), 'warning', FALSE);
+  }
+
+  // If set, send a message to the configured email addresses.
+  if (variable_get('tinyids_mailing', TRUE)) {
+    $to_address = implode(', ', variable_get('tinyids_mailing_address', array(variable_get('site_mail'))));
+    drupal_mail('tinyids', 'alert', $to_address, language_default(), array('report' => $rendered_report));
+  }
+
+  // If rules is enabled, we prepare the report and trigger our event.
+  if (module_exists('rules')) {
+    $intrusions = array();
+    foreach ($report as $source => $intrusion) {
+      $findings = array();
+      foreach ($intrusion['findings'] as $finding) {
+        $findings[] = array(
+          'type' => implode(', ', $finding['type']),
+          'description' => $finding['description'],
+          'impact' => (int) $finding['impact'],
+        );
+      }
+      $intrusions[] = array(
+        'source' => check_plain($source),
+        'value' => $intrusion['value'],
+        'save_value' => $intrusion['save_value'],
+        'impact' => $intrusion['impact'],
+        'findings' => $findings,
+      );
+    }
+    rules_invoke_event('tinyids_event_intrusion', $intrusions);
+  }
+}
+
+/**
+ * Implements hook_mail().
+ */
+function tinyids_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'alert':
+      // Default plain-text message for mail alerts.
+      $message['subject'] = t('Tiny-IDS intrusion alert');
+      $message['body'][] = t('An intrusion was detected on your site (@site_name). Please have a look at the recent log messages (!link) for further information. If you get this emails too often you should think about lowering the sensibility of Tiny-IDS.', array(
+        '@site_name' => variable_get('site_name', $_SERVER['SERVER_NAME']),
+        '!link' => url('admin/reports/dblog', array('absolute' => TRUE)),
+      ));
+      // When HTML Mail module is installed we can add the html report.
+      if (variable_get('tinyids_mailing_htmlmail', FALSE) && module_exists('htmlmail')) {
+        $message['body'][] = $params['report'];
+      }
+      break;
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function tinyids_theme() {
+  return array(
+    // Generates HTML for a intrusion report.
+    'tinyids_report' => array(
+      'variables' => array(
+        'report' => NULL,
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * Preprocessing report information before the table is rendered.
+ * We'll make sure all needed information is available, the detected
+ * findings are sorted by impact (DESC) and do some escaping.
+ */
+function tinyids_preprocess_tinyids_report(&$variables) {
+  // Sensibility setting should be useful.
+  $variables['sensibility'] = variable_get('tinyids_sensibility', 10);
+  // Order detected intrusions of a detection by impact.
+  uasort($variables['report'], '_tinyids_preprocess_tinyids_report_sort');
+  // Prepare detections and their findings for beeing displayed.
+  foreach ($variables['report'] as $source => &$detection) {
+    // Make sure to escape the source string.
+    $detection['save_source_value'] = check_plain($source);
+    foreach ($detection['findings'] as &$finding) {
+      // Types, descriptions and impacts should be hardcoded; we trust them.
+      $finding['types'] = implode(', ', $finding['type']);
+    }
+    // Order findings of a detection by impact.
+    usort($detection['findings'], '_tinyids_preprocess_tinyids_report_sort');
+  }
+}
+
+/**
+ * Helper callback function for sorting report findings by impact (DESC).
+ */
+function _tinyids_preprocess_tinyids_report_sort($a, $b) {
+  return $a['impact'] < $b['impact'];
+}
+
+/**
+ * Generates HTML for a intrusion report.
+ *
+ * We could use theme_table, but I think that would be kind of overkill
+ * here because the tables structure is kind of too chaotic.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - report: A typical tinyids report (see tinyids_react()).
+ *   - sensibility: Current sensibility setting.
+ */
+function theme_tinyids_report($variables) {
+  $output = '';
+  // Let's assemble a clumby old school HTML table for each detection.
+  foreach ($variables['report'] as $detection) {
+    $output .= '<table><tbody>';
+    $output .= '<tr><th colspan=4>' . $detection['save_source_value'] . '</th></tr>';
+    $output .= '<tr class="odd"><th>' . t('Value') . '</th>';
+    $output .= '<td colspan=3><pre>' . $detection['save_value'] . '</pre></td></tr>';
+    $output .= '<tr><th colspan=3>' . t('Impact') . '</th>';
+    $output .= '<td><strong>' . $detection['impact'] . '</strong> / ' . $variables['sensibility'] . '</td></tr>';
+    foreach ($detection['findings'] as $num => $finding) {
+      $output .= '<tr class="' . (($num % 2) ? 'even' : 'odd') . '">';
+      if ($num == 0) {
+        $output .= '<th rowspan=' . count($detection['findings']) . '>' . t('Findings') . '</th>';
+      }
+      $output .= '<th>' . $finding['types'] . '</th>';
+      $output .= '<td>' . $finding['description'] . '</td>';
+      $output .= '<td><strong>' . $finding['impact'] . '</strong></td></tr>';
+    }
+    $output .= '</tbody></table>';
+  }
+  return $output;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function tinyids_permission() {
+  return array(
+    // Add a detection by-pass permission.
+    'bypass tinyids' => array(
+      'title' => t('Bypass Tiny-IDS'),
+      'description' => t('Allows users to bypass intrusion detection.'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function tinyids_menu() {
+  $items = array();
+  // Path to tinyIDS's configuration form.
+  $items['admin/config/system/tinyids'] = array(
+    'title' => 'Tiny-IDS',
+    'description' => 'Manage Tiny-IDS (Intrusion Detection System) configuration.',
+    'page callback' => 'drupal_get_form',
+    'file' => 'tinyids.admin.inc',
+    'page arguments' => array('tinyids_settings_form'),
+    'access arguments' => array('administer site configuration'),
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_token_info().
+ *
+ * Provides tokens (replacement patterns) for rules integration.
+ */
+function tinyids_token_info() {
+  $types = array();
+  $tinyids_report_intrusion = array();
+  $tinyids_report_intrusion_finding = array();
+
+  // Tokens for intrusion datatypes.
+  $types['tinyids_report_intrusion'] = array(
+    'name' => t('Tiny-IDS intrusion'),
+    'description' => t('Tokens related to intrusion reports.'),
+  );
+  $tinyids_report_intrusion['source'] = array(
+    'name' => t('Source'),
+    'description' => t('Source variable of intrusion'),
+  );
+  $tinyids_report_intrusion['value'] = array(
+    'name' => t('Value'),
+    'description' => t('Original value of suspicious variable.'),
+  );
+  $tinyids_report_intrusion['save_value'] = array(
+    'name' => t('Save value'),
+    'description' => t('The plain suspicious value.'),
+  );
+  $tinyids_report_intrusion['impact'] = array(
+    'name' => t('Impact'),
+    'description' => t('Overall impact of intrusion.'),
+  );
+
+  // Tokens for finding datatypes.
+  $types['tinyids_report_intrusion_finding'] = array(
+    'name' => t('Tiny-IDS finding'),
+    'description' => t('Tokens related to intrusion findings.'),
+  );
+  $tinyids_report_intrusion_finding['type'] = array(
+    'name' => t('Type'),
+    'description' => t('Type of finding.'),
+  );
+  $tinyids_report_intrusion_finding['description'] = array(
+    'name' => t('Description'),
+    'description' => t('Description of finding.'),
+  );
+  $tinyids_report_intrusion_finding['impact'] = array(
+    'name' => t('Impact'),
+    'description' => t('Impact of finding.'),
+  );
+
+  return array(
+    'types' => $types,
+    'tokens' => array(
+      'tinyids_report_intrusion' => $tinyids_report_intrusion,
+      'tinyids_report_intrusion_finding' => $tinyids_report_intrusion_finding,
+    ),
+  );
+}
+
+/**
+ * Implements hook_tokens().
+ *
+ * Returns all replacement values.
+ */
+function tinyids_tokens($type, $tokens, array $data = array(), array $options = array()) {
+  $replacements = array();
+  switch ($type) {
+
+    // Replace tokens for intrusion datatypes.
+    case 'tinyids_report_intrusion':
+      foreach ($tokens as $name => $original) {
+        switch ($name) {
+          case 'source':
+            $replacements[$original] = $data[$type][$name];
+            break;
+
+          case 'value':
+            $replacements[$original] = check_plain($data[$type][$name]);
+            break;
+
+          case 'save_value':
+            $replacements[$original] = $data[$type][$name];
+            break;
+
+          case 'impact':
+            $replacements[$original] = (int) $data[$type][$name];
+            break;
+
+        }
+      }
+      break;
+
+    // Replace tokens for finding datatypes.
+    case 'tinyids_report_intrusion_finding':
+      foreach ($tokens as $name => $original) {
+        switch ($name) {
+          case 'type':
+            $replacements[$original] = $data[$type][$name];
+            break;
+
+          case 'description':
+            $replacements[$original] = $data[$type][$name];
+            break;
+
+          case 'impact':
+            $replacements[$original] = (int) $data[$type][$name];
+            break;
+
+        }
+      }
+      break;
+
+  }
+  return $replacements;
+}

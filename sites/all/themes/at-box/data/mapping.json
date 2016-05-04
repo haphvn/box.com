@@ -1,0 +1,559 @@
+{
+   "feature_groups":{
+      "en_US":{
+        "mobile_sync_share":{
+           "name":"Mobile Sync and Share",
+           "desktop_sync":"Desktop Sync",
+           "mobile_access":"Mobile Access",
+           "one_cloud_apps":"One Cloud Apps",
+           "ssl_and_at_rest_encryption":"SSL and At rest encryption",
+           "two_factor_auth":"Two Factor Authentication",
+           "secure_sharing":"Secure Sharing",
+           "tasks_comments_at_mentions":"Task, Comments, @mentions",
+           "edit_documents":"Edit Documents",
+           "search":"Search"
+        },
+        "access_permissions":{
+           "name":"Access Permissions",
+           "auto_expiration":"Auto Expiration",
+           "file_locking":"File Loading",
+           "access_stats":"Access Stats",
+           "role_based_access":"Role Based Access",
+           "version_history":"Version History",
+           "file_preview":"File Preview"
+        },
+        "content_security":{
+           "name":"Content Security",
+           "user_management":"User Management",
+           "device_pinning":"Device Printing (Desktop, Mobile)",
+           "enterprise_wide_admin_search":"Enterprise-wide Admin Search",
+           "admin_roles":"Admin Roles",
+           "compliance_email_archive":"Compliance Email Archive"
+        },
+        "reporting_tracking":{
+           "name":"Reporting and Tracking",
+           "granular_file_and_user_stats":"Granular File and User Statistics",
+           "security_reporting":"Security Reporting",
+           "reporting_api":"Reporting API",
+           "tracking_codes":"Tracking Codes"
+        },
+        "mobile_security":{
+           "name":"Mobile Security Controls",
+           "password_enforcement":"Password Enforcement",
+           "trusted_access_management":"Trusted Access Management",
+           "mdm_integration":"MDM Integration (Okta, Ping, Airwatch)"
+        },
+        "platform_integrations":{
+           "name":"Platform Integrations/API",
+           "google_apps":"Google Apps",
+           "box_embed":"Box Embed",
+           "ad_sso_integrations":"Active Directory + SSO Intergration",
+           "box_api":"Box API (Platform)",
+           "bundled_apps":"Bundled Apps",
+           "admin_apis":"Admin APIs (manage users; manage content as Admin)"
+        },
+        "customizations":{
+           "name":"Customizations",
+           "custom_branding":"Custom Branding",
+           "custom_tos":"Custom Terms of Service"
+        },
+        "training_support":{
+           "name":"Training, Support and Devices",
+           "support":"Support",
+           "pro_services":"Professional Services - Data Migration",
+           "dedicated_qbr":"Dedicated onsite QBR",
+           "vip_tickets":"VIP Tickets to Box Works (max 10)",
+           "early_beta_access":"Early beta access",
+           "event_discount":"20% per user for all Box events",
+           "dedicated_sponsor":"Dedicated executive sponsor"
+        }
+      },
+      "en_GB":{
+        "mobile_sync_share":{
+           "name":"Mobile Sync and Share",
+           "desktop_sync":"Desktop Sync",
+           "mobile_access":"Mobile Access",
+           "one_cloud_apps":"One Cloud Apps",
+           "ssl_and_at_rest_encryption":"SSL and At rest encryption",
+           "two_factor_auth":"Two Factor Authentication",
+           "secure_sharing":"Secure Sharing",
+           "tasks_comments_at_mentions":"Task, Comments, @mentions",
+           "edit_documents":"Edit Documents",
+           "search":"Search"
+        },
+        "access_permissions":{
+           "name":"Access Permissions",
+           "auto_expiration":"Auto Expiration",
+           "file_locking":"File Loading",
+           "access_stats":"Access Stats",
+           "role_based_access":"Role Based Access",
+           "version_history":"Version History",
+           "file_preview":"File Preview"
+        },
+        "content_security":{
+           "name":"Content Security",
+           "user_management":"User Management",
+           "ad_sso_integrations":"Active Directory + SSO Intergration",
+           "device_pinning":"Device Printing (Desktop, Mobile)",
+           "enterprise_wide_admin_search":"Enterprise-wide Admin Search",
+           "admin_roles":"Admin Roles",
+           "compliance_email_archive":"Compliance Email Archive"
+        },
+        "reporting_tracking":{
+           "name":"Reporting and Tracking",
+           "granular_file_and_user_stats":"Granular File and User Statistics",
+           "security_reporting":"Security Reporting",
+           "reporting_api":"Reporting API",
+           "tracking_codes":"Tracking Codes"
+        },
+        "mobile_security":{
+           "name":"Mobile Security Controls",
+           "password_enforcement":"Password Enforcement",
+           "trusted_access_management":"Trusted Access Management",
+           "mdm_integration":"MDM Integration (Okta, Ping, Airwatch)"
+        },
+        "platform_integrations":{
+           "name":"Platform Integrations/API",
+           "google_apps":"Google Apps",
+           "box_embed":"Box Embed",
+           "ad_sso_integrations":"Jive, NetSuite, Salesforce",
+           "box_api":"Box API (Platform)",
+           "bundled_apps":"Bundled Apps",
+           "admin_apis":"Admin APIs (create/edit/delete user; manage content as Admin)"
+        },
+        "customizations":{
+           "name":"Customizations",
+           "custom_branding":"Custom Branding",
+           "custom_tos":"Custom Terms of Service"
+        },
+        "training_support":{
+           "name":"Training, Support and Devices",
+           "support":"Support",
+           "pro_services":"Professional Services - Data Migration",
+           "dedicated_qbr":"Dedicated onsite QBR",
+           "vip_tickets":"VIP Tickets to Box Works (max 10)",
+           "early_beta_access":"Early beta access",
+           "event_discount":"20% per user for all Box events",
+           "dedicated_sponsor":"Dedicated executive sponsor"
+        }
+      },
+      "fr_FR":{
+        "mobile_sync_share":{
+           "name":"Mobile Sync and Share",
+           "desktop_sync":"Desktop Sync",
+           "mobile_access":"Mobile Access",
+           "one_cloud_apps":"One Cloud Apps",
+           "ssl_and_at_rest_encryption":"SSL and At rest encryption",
+           "two_factor_auth":"Two Factor Authentication",
+           "secure_sharing":"Secure Sharing",
+           "tasks_comments_at_mentions":"Task, Comments, @mentions",
+           "edit_documents":"Edit Documents",
+           "search":"Search"
+        },
+        "access_permissions":{
+           "name":"Access Permissions",
+           "auto_expiration":"Auto Expiration",
+           "file_locking":"File Loading",
+           "access_stats":"Access Stats",
+           "role_based_access":"Role Based Access",
+           "version_history":"Version History",
+           "file_preview":"File Preview"
+        },
+        "content_security":{
+           "name":"Content Security",
+           "user_management":"User Management",
+           "ad_sso_integrations":"Active Directory + SSO Intergration",
+           "device_pinning":"Device Printing (Desktop, Mobile)",
+           "enterprise_wide_admin_search":"Enterprise-wide Admin Search",
+           "admin_roles":"Admin Roles",
+           "compliance_email_archive":"Compliance Email Archive"
+        },
+        "reporting_tracking":{
+           "name":"Reporting and Tracking",
+           "granular_file_and_user_stats":"Granular File and User Statistics",
+           "security_reporting":"Security Reporting",
+           "reporting_api":"Reporting API",
+           "tracking_codes":"Tracking Codes"
+        },
+        "mobile_security":{
+           "name":"Mobile Security Controls",
+           "password_enforcement":"Password Enforcement",
+           "trusted_access_management":"Trusted Access Management",
+           "mdm_integration":"MDM Integration (Okta, Ping, Airwatch)"
+        },
+        "platform_integrations":{
+           "name":"Platform Integrations/API",
+           "google_apps":"Google Apps",
+           "box_embed":"Box Embed",
+           "ad_sso_integrations":"Jive, NetSuite, Salesforce",
+           "box_api":"Box API (Platform)",
+           "bundled_apps":"Bundled Apps",
+           "admin_apis":"Admin APIs (create/edit/delete user; manage content as Admin)"
+        },
+        "customizations":{
+           "name":"Customizations",
+           "custom_branding":"Custom Branding",
+           "custom_tos":"Custom Terms of Service"
+        },
+        "training_support":{
+           "name":"Training, Support and Devices",
+           "support":"Support",
+           "pro_services":"Professional Services - Data Migration",
+           "dedicated_qbr":"Dedicated onsite QBR",
+           "vip_tickets":"VIP Tickets to Box Works (max 10)",
+           "early_beta_access":"Early beta access",
+           "event_discount":"20% per user for all Box events",
+           "dedicated_sponsor":"Dedicated executive sponsor"
+        }
+      },
+      "de_DE":{
+        "mobile_sync_share":{
+           "name":"Mobile Sync and Share",
+           "desktop_sync":"Desktop Sync",
+           "mobile_access":"Mobile Access",
+           "one_cloud_apps":"One Cloud Apps",
+           "ssl_and_at_rest_encryption":"SSL and At rest encryption",
+           "two_factor_auth":"Two Factor Authentication",
+           "secure_sharing":"Secure Sharing",
+           "tasks_comments_at_mentions":"Task, Comments, @mentions",
+           "edit_documents":"Edit Documents",
+           "search":"Search"
+        },
+        "access_permissions":{
+           "name":"Access Permissions",
+           "auto_expiration":"Auto Expiration",
+           "file_locking":"File Loading",
+           "access_stats":"Access Stats",
+           "role_based_access":"Role Based Access",
+           "version_history":"Version History",
+           "file_preview":"File Preview"
+        },
+        "content_security":{
+           "name":"Content Security",
+           "user_management":"User Management",
+           "ad_sso_integrations":"Active Directory + SSO Intergration",
+           "device_pinning":"Device Printing (Desktop, Mobile)",
+           "enterprise_wide_admin_search":"Enterprise-wide Admin Search",
+           "admin_roles":"Admin Roles",
+           "compliance_email_archive":"Compliance Email Archive"
+        },
+        "reporting_tracking":{
+           "name":"Reporting and Tracking",
+           "granular_file_and_user_stats":"Granular File and User Statistics",
+           "security_reporting":"Security Reporting",
+           "reporting_api":"Reporting API",
+           "tracking_codes":"Tracking Codes"
+        },
+        "mobile_security":{
+           "name":"Mobile Security Controls",
+           "password_enforcement":"Password Enforcement",
+           "trusted_access_management":"Trusted Access Management",
+           "mdm_integration":"MDM Integration (Okta, Ping, Airwatch)"
+        },
+        "platform_integrations":{
+           "name":"Platform Integrations/API",
+           "google_apps":"Google Apps",
+           "box_embed":"Box Embed",
+           "ad_sso_integrations":"Jive, NetSuite, Salesforce",
+           "box_api":"Box API (Platform)",
+           "bundled_apps":"Bundled Apps",
+           "admin_apis":"Admin APIs (create/edit/delete user; manage content as Admin)"
+        },
+        "customizations":{
+           "name":"Customizations",
+           "custom_branding":"Custom Branding",
+           "custom_tos":"Custom Terms of Service"
+        },
+        "training_support":{
+           "name":"Training, Support and Devices",
+           "support":"Support",
+           "pro_services":"Professional Services - Data Migration",
+           "dedicated_qbr":"Dedicated onsite QBR",
+           "vip_tickets":"VIP Tickets to Box Works (max 10)",
+           "early_beta_access":"Early beta access",
+           "event_discount":"20% per user for all Box events",
+           "dedicated_sponsor":"Dedicated executive sponsor"
+        }
+      },
+      "it_IT":{
+        "mobile_sync_share":{
+           "name":"Mobile Sync and Share",
+           "desktop_sync":"Desktop Sync",
+           "mobile_access":"Mobile Access",
+           "one_cloud_apps":"One Cloud Apps",
+           "ssl_and_at_rest_encryption":"SSL and At rest encryption",
+           "two_factor_auth":"Two Factor Authentication",
+           "secure_sharing":"Secure Sharing",
+           "tasks_comments_at_mentions":"Task, Comments, @mentions",
+           "edit_documents":"Edit Documents",
+           "search":"Search"
+        },
+        "access_permissions":{
+           "name":"Access Permissions",
+           "auto_expiration":"Auto Expiration",
+           "file_locking":"File Loading",
+           "access_stats":"Access Stats",
+           "role_based_access":"Role Based Access",
+           "version_history":"Version History",
+           "file_preview":"File Preview"
+        },
+        "content_security":{
+           "name":"Content Security",
+           "user_management":"User Management",
+           "ad_sso_integrations":"Active Directory + SSO Intergration",
+           "device_pinning":"Device Printing (Desktop, Mobile)",
+           "enterprise_wide_admin_search":"Enterprise-wide Admin Search",
+           "admin_roles":"Admin Roles",
+           "compliance_email_archive":"Compliance Email Archive"
+        },
+        "reporting_tracking":{
+           "name":"Reporting and Tracking",
+           "granular_file_and_user_stats":"Granular File and User Statistics",
+           "security_reporting":"Security Reporting",
+           "reporting_api":"Reporting API",
+           "tracking_codes":"Tracking Codes"
+        },
+        "mobile_security":{
+           "name":"Mobile Security Controls",
+           "password_enforcement":"Password Enforcement",
+           "trusted_access_management":"Trusted Access Management",
+           "mdm_integration":"MDM Integration (Okta, Ping, Airwatch)"
+        },
+        "platform_integrations":{
+           "name":"Platform Integrations/API",
+           "google_apps":"Google Apps",
+           "box_embed":"Box Embed",
+           "ad_sso_integrations":"Jive, NetSuite, Salesforce",
+           "box_api":"Box API (Platform)",
+           "bundled_apps":"Bundled Apps",
+           "admin_apis":"Admin APIs (create/edit/delete user; manage content as Admin)"
+        },
+        "customizations":{
+           "name":"Customizations",
+           "custom_branding":"Custom Branding",
+           "custom_tos":"Custom Terms of Service"
+        },
+        "training_support":{
+           "name":"Training, Support and Devices",
+           "support":"Support",
+           "pro_services":"Professional Services - Data Migration",
+           "dedicated_qbr":"Dedicated onsite QBR",
+           "vip_tickets":"VIP Tickets to Box Works (max 10)",
+           "early_beta_access":"Early beta access",
+           "event_discount":"20% per user for all Box events",
+           "dedicated_sponsor":"Dedicated executive sponsor"
+        }
+      },
+      "es_ES":{
+        "mobile_sync_share":{
+           "name":"Mobile Sync y Share",
+           "desktop_sync":"Desktop Sync",
+           "mobile_access":"Mobile Access",
+           "one_cloud_apps":"Cloud Uno Apps",
+           "ssl_and_at_rest_encryption":"SSL and At rest encryption",
+           "two_factor_auth":"Autenticación de dos factores",
+           "secure_sharing":"Compartir Secure",
+           "tasks_comments_at_mentions":"Tareas, comentarios, @ menciones",
+           "edit_documents":"Editar Documentos",
+           "search":"Buscar"
+        },
+        "access_permissions":{
+           "name":"Access Permissions",
+           "auto_expiration":"Auto Expiration",
+           "file_locking":"File Loading",
+           "access_stats":"Access Stats",
+           "role_based_access":"Role Based Access",
+           "version_history":"Version History",
+           "file_preview":"File Preview"
+        },
+        "content_security":{
+           "name":"Content Security",
+           "user_management":"User Management",
+           "ad_sso_integrations":"Active Directory + SSO Intergration",
+           "device_pinning":"Device Printing (Desktop, Mobile)",
+           "enterprise_wide_admin_search":"Enterprise-wide Admin Search",
+           "admin_roles":"Admin Roles",
+           "compliance_email_archive":"Compliance Email Archive"
+        },
+        "reporting_tracking":{
+           "name":"Reporting and Tracking",
+           "granular_file_and_user_stats":"Granular File and User Statistics",
+           "security_reporting":"Security Reporting",
+           "reporting_api":"Reporting API",
+           "tracking_codes":"Tracking Codes"
+        },
+        "mobile_security":{
+           "name":"Mobile Security Controls",
+           "password_enforcement":"Password Enforcement",
+           "trusted_access_management":"Trusted Access Management",
+           "mdm_integration":"MDM Integration (Okta, Ping, Airwatch)"
+        },
+        "platform_integrations":{
+           "name":"Platform Integrations/API",
+           "google_apps":"Google Apps",
+           "box_embed":"Box Embed",
+           "ad_sso_integrations":"Jive, NetSuite, Salesforce",
+           "box_api":"Box API (Platform)",
+           "bundled_apps":"Bundled Apps",
+           "admin_apis":"Admin APIs (create/edit/delete user; manage content as Admin)"
+        },
+        "customizations":{
+           "name":"Customizations",
+           "custom_branding":"Custom Branding",
+           "custom_tos":"Custom Terms of Service"
+        },
+        "training_support":{
+           "name":"Training, Support and Devices",
+           "support":"Support",
+           "pro_services":"Professional Services - Data Migration",
+           "dedicated_qbr":"Dedicated onsite QBR",
+           "vip_tickets":"VIP Tickets to Box Works (max 10)",
+           "early_beta_access":"Early beta access",
+           "event_discount":"20% per user for all Box events",
+           "dedicated_sponsor":"Dedicated executive sponsor"
+        }
+      }
+   },
+   "feature_descriptions":{
+      "en_US":[
+         {
+            "id":"100",
+            "description": "Lite (5GB)",
+            "info_storage": {
+              "title": "this is the storage title",
+              "info": "this is the info about storage"
+            },
+            "info_filesize": {
+              "title": "this is the file size title",
+              "info": "this is the info about file sizes"
+            }
+         },
+         {
+            "id":"200",
+            "description":"Personal +25GB (monthly) Really long text block. More than two lines. blah blah blah. Lorem ipsum.",
+            "search":"Full Text",
+            "version_history":100
+         },
+         {
+            "id":"300",
+            "description": "Personal +50GB (monthly)",
+            "version_history":50
+         },
+         {
+            "id":"400",
+            "description": "Business Administrator (per month)",
+            "version_history":25
+         }
+      ],
+      "en_GB":[
+         {
+            "id":"100",
+            "description": "Lite (5GB)"
+         },
+         {
+            "id":"200",
+            "description":"Personal +25GB (monthly)",
+            "search":"Full Text",
+            "version_history":100
+         },
+         {
+            "id":"300",
+            "description": "Personal +50GB (monthly)",
+            "version_history":50
+         },
+         {
+            "id":"400",
+            "description": "Business Administrator (per month)",
+            "version_history":25
+         }
+      ],
+      "fr_FR":[
+         {
+            "id":"100",
+            "description": "Lite (5GB)"
+         },
+         {
+            "id":"200",
+            "description":"Personal +25GB (monthly)",
+            "search":"Full Text",
+            "version_history":100
+         },
+         {
+            "id":"300",
+            "description": "Personal +50GB (monthly)",
+            "version_history":50
+         },
+         {
+            "id":"400",
+            "description": "Business Administrator (per month)",
+            "version_history":25
+         }
+      ],
+      "de_DE":[
+         {
+            "id":"100",
+            "description": "Lite (5GB)"
+         },
+         {
+            "id":"200",
+            "description":"Personal +25GB (monthly)",
+            "search":"Full Text",
+            "version_history":100
+         },
+         {
+            "id":"300",
+            "description": "Personal +50GB (monthly)",
+            "version_history":50
+         },
+         {
+            "id":"400",
+            "description": "Business Administrator (per month)",
+            "version_history":25
+         }
+      ],
+      "it_IT":[
+         {
+            "id":"100",
+            "description": "Lite (5GB)"
+         },
+         {
+            "id":"200",
+            "description":"Personal +25GB (monthly)",
+            "search":"Full Text",
+            "version_history":100
+         },
+         {
+            "id":"300",
+            "description": "Personal +50GB (monthly)",
+            "version_history":50
+         },
+         {
+            "id":"400",
+            "description": "Business Administrator (per month)",
+            "version_history":25
+         }
+      ],
+      "es_ES":[
+         {
+            "id":"100",
+            "description": "Lite (5GB)"
+         },
+         {
+            "id":"200",
+            "description":"Personal +25GB (monthly)",
+            "search":"Full Text",
+            "version_history":100
+         },
+         {
+            "id":"300",
+            "description": "Personal +50GB (monthly)",
+            "version_history":50
+         },
+         {
+            "id":"400",
+            "description": "Business Administrator (per month)",
+            "version_history":25
+         }
+      ]
+   }
+}

@@ -1,0 +1,21 @@
+/**
+ * @file
+ * RTL icon styling for responsive preview.
+ */
+
+.navbar .bar .navbar-tab-responsive-preview .icon-responsive-preview:before {
+  left: auto; /* LTR */
+  right: 1em;
+}
+
+/**
+ * Responsive preview controls icons.
+ */
+.responsive-preview .icon-close:before {
+  left: 9px;
+  right: auto;
+}
+.responsive-preview .icon-orientation:before {
+  left: auto;
+  right: 9px;
+}

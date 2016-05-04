@@ -1,0 +1,38 @@
+{
+  "members" : [
+    {
+    "itemid"    :"0",
+    "avatar"    : "../img/u18-exeteam-1.png",
+    "connects"  : {
+        "linkedin" : "#",
+        "twitter"  : "#"
+    },
+    "title"     : "Aaron Levie",
+    "subtitle"  : "Co-founder & Chief Executive Officer",
+    "content"   : "<p>Aaron Levie is the CEO and co-founder of Box, which he originally created as a college business project with the goal of helping people easily access their information from any location. Box was launched from Aaron's dorm room in 2005 with the help of CFO Dylan Smith. He is the visionary behind Box's product and platform strategy, which is focused on incorporating the best of traditional content management with the most effective elements ofsocial business software. He has spoken about content and collaboration tools at events such as Fortune Brainstorm Tech, Web 2.0, Dreamforce, Accenture Global Summit, South by Southwest, and Svase.</p><p>Aaron studied business at the Marshall School of Business at the University of Southern California before taking a leave of absence.</p>"
+    },
+    {
+    "itemid"    :"1",
+    "avatar"    : "../img/u18-exeteam-2.png",
+    "connects"  : {
+        "linkedin" : "#",
+        "twitter"  : "#"
+    },
+    "title"     : "Dylan Smith",
+    "subtitle"  : "Co-founder & Chief Financial Officer",
+    "content"   : "<p>Dylan Smith is Chief Financial Officer and co-founder of Box, where he leads finance, investor relations and other miscellaneous operations. He has been instrumental in Box's growth and development since starting the company with co-founder Aaron Levie while in college. He has been named one of BusinessWeek's top 5 Entrepreneurs under 25, and was also a finalist for Silicon Valley's CFO of the Year. Prior to Box, Dylan spent his time earning Box's seed funding through various entrepreneurial endeavors.</p><p>Dylan received a bachelor's degree in economics from Duke University.</p>"
+    },
+    {
+    "itemid"    :"2",
+    "avatar"    : "../img/u18-exeteam-3.png",
+    "connects"  : {
+        "linkedin" : "#",
+        "twitter"  : "#"
+    },
+    "title"     : "Dan Levin",
+    "subtitle"  : "Chief Operating Officer",
+    "content"   : "<p>Dan Levin is the Chief Operating Officer of Box. Prior to his engagement with Box, Dan spent 6+ years at Intuit in a variety of roles including Senior Vice President and General Manager of the Small Business Group, Vice President and General Manager of the Quicken Health Group, and Vice President of Product Management.</p><p>Previously, Dan spent thirteen years in venture-backed startups, including senior executive roles at ReplayTV which was acquired by Sonic Blue (SVP and CTO), GuestConnect which was acquired by 4th Network (founder and CEO) and Books That Work which was acquired by Sierra On-Line (cofounder and President).</p>"
+    }    
+  ]
+
+}

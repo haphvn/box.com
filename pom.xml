@@ -1,0 +1,90 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>pyco.boxcom</groupId>
+  <artifactId>boxcom</artifactId>
+  <name>Boxcom</name>
+  <version>1.0-SNAPSHOT</version>
+  <!-- For the moment, specify pom as packaging for php projects -->
+  <packaging>pom</packaging>
+
+<issueManagement>
+        <system>Jira</system>
+         <url>https://jira.pyramid-consulting.com/jira</url>
+</issueManagement>
+
+<scm>
+        <connection>scm:svn:https://svn.pyramid-consulting.com/svn/boxcom/trunk/src/php</connection>
+         <url>https://svn.pyramid-consulting.com/svn/boxcom/trunk/src/php</url>
+</scm>
+
+   <ciManagement>
+        <system>Bamboo</system>
+         <url>http://bamboo.pyramid-consulting.com/bamboo/</url>
+    </ciManagement>
+
+<!--	<build>-->
+		<!--sourceDirectory>${basedir}/apps</sourceDirectory-->
+		<!--testSourceDirectory>${basedir}/source/tests</testSourceDirectory-->
+<!--	</build>-->  
+  <build>
+    <!-- You cannot omit this one, because maven will implicitely add src/main/java
+      to it -->
+    <sourceDirectory>${basedir}/building</sourceDirectory>
+<!--    <testSourceDirectory>${basedir}/source/tests</testSourceDirectory>-->
+ 
+    <!-- build helper maven plugin to enable multiple source directories -->
+    <plugins>
+      <plugin>
+			  <artifactId>maven-antrun-plugin</artifactId>
+			  <executions>
+			    <execution>
+			      <id>generate-sources</id>
+			      <phase>generate-sources</phase>
+			      <configuration>
+			        <tasks>
+			          <delete dir="${basedir}/building" />
+			          <mkdir dir="${basedir}/building" />
+			          <mkdir dir="${basedir}/building/sites" />
+			          <mkdir dir="${basedir}/building/sites/all" />
+			          <mkdir dir="${basedir}/building/sites/all/modules" />
+				  <mkdir dir="${basedir}/building/sites/all/modules/custom" />
+				  <copydir src="${basedir}/sites/all/modules/custom" dest="${basedir}/building/sites/all/modules/custom" includes="**/*.php,**/*.inc,**/*.module" excludes="**/*.tpl.php" />
+			        </tasks>
+			      </configuration>
+			      <goals>
+			        <goal>run</goal>
+			      </goals>
+			    </execution>
+			  </executions>
+			</plugin>
+    </plugins>
+  </build>
+  
+	<!-- some properties that you may want to change -->
+	<properties>
+		<sonar.language>php</sonar.language>
+		<sonar.dynamicAnalysis>true</sonar.dynamicAnalysis>
+		
+		<sonar.phpPmd.shouldRun>true</sonar.phpPmd.shouldRun>
+		<sonar.phpPmd.analyzeOnly>false</sonar.phpPmd.analyzeOnly>
+		
+		<sonar.phpCodesniffer.shouldRun>true</sonar.phpCodesniffer.shouldRun>
+		<sonar.phpCodesniffer.analyzeOnly>false</sonar.phpCodesniffer.analyzeOnly>
+		<sonar.phpCodesniffer.standardArgument>Pear</sonar.phpCodesniffer.standardArgument>
+		
+		<sonar.phpDepend.shouldRun>true</sonar.phpDepend.shouldRun>
+		<sonar.phpDepend.analyzeOnly>false</sonar.phpDepend.analyzeOnly>
+		
+		<sonar.phpcpd.shouldRun>false</sonar.phpcpd.shouldRun>
+		
+		<sonar.phpUnit.coverage.shouldRun>false</sonar.phpUnit.coverage.shouldRun>
+		<sonar.phpUnit.analyzeOnly>false</sonar.phpUnit.analyzeOnly>
+		<sonar.phpUnit.shouldRun>false</sonar.phpUnit.shouldRun>
+		<sonar.phpUnit.analyze.test.directory>false</sonar.phpUnit.analyze.test.directory>
+		
+		<!-- to enable mutliple source directories. The phase must patch with the build-helper-maven-plugin exectution phase -->
+    <sonar.phase>generate-sources</sonar.phase>
+	</properties>
+ 
+</project>

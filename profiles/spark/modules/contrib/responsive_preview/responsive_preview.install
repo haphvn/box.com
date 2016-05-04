@@ -1,0 +1,82 @@
+<?php
+/**
+ * @file
+ * responsive_preview.install
+ */
+
+/**
+ * Implements hook_install().
+ */
+function responsive_preview_install() {
+  /* References:
+   * - http://en.wikipedia.org/wiki/List_of_displays_by_pixel_density
+   * - http://www.w3.org/blog/CSS/2012/06/14/unprefix-webkit-device-pixel-ratio/
+   * - http://pieroxy.net/blog/2012/10/18/media_features_of_the_most_common_devices.html
+   *
+   * The device listing and specifications will be updated periodically through
+   * minor releases of Drupal.
+   */
+  variable_set('responsive_preview_devices', array(
+    'iphone' => array(
+      'label' => 'iPhone 5',
+      'dimensions' => array(
+        'width' => '640',
+        'height' => '1136',
+        'dppx' => '2',
+      ),
+      'orientation' => 'portrait',
+    ),
+    'iphone4' => array(
+      'label' => 'iPhone 4',
+      'dimensions' => array(
+        'width' => '640',
+        'height' => '960',
+        'dppx' => '2',
+      ),
+      'orientation' => 'portrait',
+    ),
+    'ipad' => array(
+      'label' => 'iPad',
+      'dimensions' => array(
+        'width' => '1536',
+        'height' => '2048',
+        'dppx' => '2',
+      ),
+      'orientation' => 'portrait',
+    ),
+    'nexus4' => array(
+      'label' => 'Nexus 4',
+      'dimensions' => array(
+        'width' => '768',
+        'height' => '1280',
+        'dppx' => '2',
+      ),
+      'orientation' => 'portrait',
+    ),
+    'nexus7' => array(
+      'label' => 'Nexus 7',
+      'dimensions' => array(
+        'width' => '800',
+        'height' => '1280',
+        'dppx' => '1.325',
+      ),
+      'orientation' => 'portrait',
+    ),
+    'desktop' => array(
+      'label' => 'Typical desktop',
+      'dimensions' => array(
+        'width' => '1366',
+        'height' => '768',
+        'dppx' => '1',
+      ),
+      'orientation' => 'landscape',
+    ),
+  ));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function responsive_preview_uninstall() {
+  variable_del('responsive_preview_devices');
+}

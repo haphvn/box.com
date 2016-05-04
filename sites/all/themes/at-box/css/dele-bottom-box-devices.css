@@ -1,0 +1,22 @@
+.title-type-1{color: #333333;display: block;font-family: 'proximanova-regular';font-size: 40px;font-weight: normal;margin: 0;padding: 0;}
+.img-type-2{float: left; width: 336px; height: 210px;margin-right: 53px;}
+.lnk-view-all{font-size: 15px;color: #6699cc;}
+
+.panel-browser-app{float: left; width: 100%;padding-left: 55px;}	
+	.panel-browser-app .panel-inner {float: left; margin: 10px 0 0 30px;}
+	
+	.panel-browser-app .block {display: block;float: left;}
+	.panel-browser-app .one-cloud{background: url("../img/shadow-1.png") no-repeat scroll center 0 transparent;}
+		.one-cloud .col{}
+		.one-cloud .col-1{}
+		.one-cloud .col-2{float: left;width: 175px;}
+		.one-cloud .col-3{float: left;width: 260px;}
+			.one-cloud ul{float: left;width: 260px;}
+			.one-cloud .col-3 li {list-style-type: disc;}
+			
+			
+		.panel-browser-app .list-apps{width: 100%; overflow: hidden;}
+		.panel-browser-app .list-apps li{float: left; width: 290px; padding-bottom: 30px;height: 135px;}
+		.panel-browser-app .desc{float: left; width :150px; margin-left: 20px;}
+		.panel-browser-app .desc > h4{margin: 0; padding-bottom: 10px;}
+		.panel-browser-app .img-type-1{float:left; margin-right: 10px;}

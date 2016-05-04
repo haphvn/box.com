@@ -1,0 +1,88 @@
+/*** start line 219 - mine, 219 - git *****/
+
+
+.buttons_3 .btnGray { height: 29px; line-height: 29px; padding: 6px 28px; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.49); border: 1px solid #2c2c2c; /*position: absolute; left: 8.7%; top: 60px;*/ font-family: 'proximanova-semibold'; font-size: 14px; color: #fff;
+
+    /* Box shadow - Inner shadow - border complete */
+    -webkit-box-shadow: 0px 0 1px #000, inset 0px 1px 1px rgba(255, 255, 255, 0.8), 0px 1px 1px rgba(0, 0, 0, 0.71);
+    -moz-box-shadow: 0px 0 1px #000, inset 0px 1px 1px rgba(255, 255, 255, 0.8), 0px 1px 1px rgba(0, 0, 0, 0.71);
+    box-shadow: 0px 0 1px #000, inset 0px 1px 1px rgba(255, 255, 255, 0.8), 0px 1px 1px rgba(0, 0, 0, 0.71);
+
+
+    /* Border Radius */
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+
+    /* Gradient */
+    background: rgb(118,118,118); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(118,118,118,1) 0%, rgba(76,76,76,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(118,118,118,1)), color-stop(100%,rgba(76,76,76,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(118,118,118,1) 0%,rgba(76,76,76,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(118,118,118,1) 0%,rgba(76,76,76,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(118,118,118,1) 0%,rgba(76,76,76,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(118,118,118,1) 0%,rgba(76,76,76,1) 100%); /* W3C */
+  }
+  .buttons_3 .btnGray:hover {
+     background: rgb(118,118,118);
+    box-shadow: 0px 2px 2px -1px rgba(0,0,0,0.7), -1px 2px 1px rgba(255,255,255,0.3) inset;
+    -webkit-box-shadow: 0px 2px 2px -1px rgba(0,0,0,0.7), -1px 2px 1px rgba(255,255,255,0.3) inset;
+    -moz-box-shadow: 0px 2px 2px -1px rgba(0,0,0,0.7), -1px 2px 1px rgba(255,255,255,0.3) inset;
+    -o-box-shadow: 0px 2px 2px -1px rgba(0,0,0,0.7), -1px 2px 1px rgba(255,255,255,0.3) inset;  
+  }
+
+  .buttons_3 .btnGray:active {
+    background: -moz-linear-gradient(bottom, #767676  0%, #4c4c4c 100%);
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(0%,#767676), color-stop(100%,#4c4c4c )); 
+    background: -webkit-linear-gradient(bottom, #767676 0%,#4c4c4c 100%); 
+    background: -o-linear-gradient(bottom, #767676 0%,#4c4c4c  100%); 
+    background: -ms-linear-gradient(bottom, #767676 0%,#4c4c4c  100%); 
+    background: linear-gradient(to bottom,#4c4c4c 0%,#767676 100%);   
+}
+  .ie9 .buttons_3 .btnGray,
+  .lt-ie9 .buttons_3 .btnGray{
+  background: url(../img/bg-button-gray2.png) left top no-repeat;
+  border: none;  
+  padding-right: 0;
+  position: relative;
+  text-align: center;
+  box-shadow: none;
+  border-radius: 0;
+  display: block;
+  height: 18px;
+}
+.ie9 .buttons_3 .btnGray:before,
+.lt-ie9 .buttons_3 .btnGray:before {
+  display: block;
+  content: '';
+  background: url(../img/bg-button-gray2.png) right top no-repeat;
+  border: none;
+  height: 33px;
+  width: 24px;
+  overflow: hidden;
+  position: absolute;
+  left: auto;
+  right: -24px;
+  top: 0;
+  z-index: 1;
+  border-radius: 0px;
+  box-shadow: none;
+}
+
+.ie9 .buttons_3 .btnGray:hover,
+ .lt-ie9 .buttons_3 .btnGray:hover{
+  background: url(../img/bg-button-gray2.png) 0px -36px no-repeat;  
+}
+.ie9 .buttons_3 .btnGray:hover:before,
+ .lt-ie9 .buttons_3 .btnGray:hover:before {
+  background: url(../img/bg-button-gray2.png) right -36px no-repeat;
+}
+
+.ie9 .buttons_3 .btnGray:active,
+ .lt-ie9 .buttons_3 .btnGray:active{
+  background: url(../img/bg-button-gray2.png) 0px -72px no-repeat;
+}
+.ie9 .buttons_3 .btnGray:active:before,
+ .lt-ie9 .buttons_3 .btnGray:active:before {
+  background: url(../img/bg-button-gray2.png) right -72px no-repeat;
+}

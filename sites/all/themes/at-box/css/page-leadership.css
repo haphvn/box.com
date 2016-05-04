@@ -1,0 +1,335 @@
+/*** Public style ***/
+h2,
+h3 { margin: 0;}
+#template{display: none;}
+.hidden { display: none !important;}
+
+.tab-container {font-size: 0;}
+.tab-contents-wrapper {
+  display: block;
+  position: relative;
+}
+.tab-content {
+  display: none;
+  position: relative;
+  z-index: 1;
+}
+
+.linkedin {
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  background: url('../img/ico-social-connect.png') no-repeat scroll -1px 0px;
+}
+.twitter {
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  background: url('../img/ico-social-connect.png') no-repeat scroll -1px -50px;
+}
+.title {
+  font-family: 'proximanova-semibold';
+  font-weight: normal;
+  display: block;
+  color: #747679;
+}
+.sub-title {
+  font-family: 'proximanova-semibold';
+  font-weight: normal;
+  display: block;
+  color: #747679;
+}
+.description {
+  font-family: 'proximanova-light';
+  color: #999999;
+}
+.avatar {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: url('../img/profile-provider.png') no-repeat scroll center bottom transparent;
+  padding-bottom: 6px;
+}
+.no-devider .avatar {
+  background: none;
+}
+.no-connect {}
+.avatar img {
+  margin: auto;
+}
+.mobile-content {
+  display: none;
+}
+
+/*** Mobile style ***/
+@media screen and (max-width: 719px) {
+
+  .mobile-content {
+    display: block;
+  }
+  .non-mobile-content {
+    display: none;
+  }
+  .shadow-top {
+    padding-top: 36px;
+  }  
+  .page-description {
+    font-family: 'proximanova-regular';
+    font-size: 15px;
+    line-height: 18px;
+    color: #747679;
+    margin: 36px 9.375% 0px 9.375%;
+  }
+  .tab-container {
+    margin-top: 36px;
+  }
+  .tab-controls-wrapper {
+    display: block;
+    margin: 0px 9.375% 36px 9.375%;
+    min-height: 32px;
+    position: relative;
+  }
+  .tab-controls {
+  
+  }  
+  .tab-content .content:first-child {
+    background: #ffffff;
+  }
+  .tab-content .content:first-child .shadow-top {
+    padding-top: 0;
+    background: none;
+  }
+  .profile-left {
+    margin: 0 9.375%;
+    width: auto;
+    text-align: left;
+    font-size: 0;
+  }
+  .profile-right {
+    display: block;
+    margin: 0 9.375%;
+    width: auto;
+  }
+  .avatar {
+    margin-bottom: 18px;
+    margin-top: 24px;
+    width: 100%;
+  }
+  .avatar img {
+    width: 185px;
+    height: 185px;
+  }
+  .content .title {
+    font-size: 18px;
+    line-height: 20px;
+    margin-bottom: 5px;
+    margin-left: 9.375%;
+  }
+  .content .sub-title {
+    font-size: 15px;
+    line-height: 18px;
+    margin-bottom: 7px;
+    margin-left: 9.375%;
+  }
+  .linkedin {
+    margin-right: 12px;
+    width: 32px;
+    height: 32px;
+    background-position: -10px -100px;
+  }
+  .twitter {
+    width: 32px;
+    height: 32px;
+    background-position: -10px -132px;
+  }
+  .mobile-content.linkedin,
+  .mobile-content.twitter {
+    display: inline-block;
+  }
+  .description p {
+    font-size: 15px;
+    line-height: 18px;
+  }
+  .description p + p {
+    margin-top: 16px;
+  }
+  
+}
+
+
+
+/*** Tablet style ***/
+@media screen and (min-width: 720px) and (max-width: 977px) {
+  .shadow-top {
+      padding-top: 59px;
+  }
+  .padding-bottom-60 {
+    padding-bottom: 56px;
+  }
+  .tab-controls {
+    display: inline-block;
+    margin: 40px 0px 60px 40px;
+  }
+  .lt-ie9 .tab-controls { margin-left: 60px;}
+  .tab-content .content:first-child {
+    background: #ffffff;
+  }
+  .tab-content .content:first-child .shadow-top {
+    padding-top: 0;
+    background: none;
+  }
+  .profile-left {
+    margin-top: -30px;
+    width: 45.416%;
+    float: left;
+    text-align: center;
+    font-size: 0;
+  }  
+  .profile-right {
+    display: block;
+    margin-left: 46.94%;
+    margin-right: 5.55%;
+  }
+  .avatar {
+    margin-bottom: 18px;
+  }
+  .avatar img {
+    width: 185px;
+    height: 185px;
+  }
+  .content .title {
+    font-size: 22px;
+    line-height: 18px;
+    margin-bottom: 13px;
+    margin-left: 46.94%;    
+  }
+  .content .sub-title {
+    font-size: 15px;
+    line-height: 18px;
+    margin-bottom: 16px;
+    margin-left: 46.94%;    
+  }
+  .linkedin {
+    margin-left: -24px;
+    margin-right: 18px;
+  }
+
+  .description p {
+    font-size: 15px;
+    line-height: 18px;
+  }
+  .description p + p {
+    margin-top: 16px;
+  }
+  .no-connect .profile-left {
+    margin-top: -34px;
+    width: 346px;
+    text-align: left;
+  }
+  .no-connect .profile-left .avatar {
+    text-align: left;
+    background-position: left bottom;
+  }
+  .no-connect .avatar img { 
+    margin: 0 0 0 40px;    
+  }  
+  .no-connect .profile-right {
+    margin-left: 346px;
+  }
+  .no-connect .title,
+  .no-connect .sub-title {
+    margin-left: 346px;
+  }
+  
+}
+
+
+/*** Desktop style ***/
+@media screen and (min-width: 978px) {
+
+  .shadow-top {
+    padding-top: 60px;
+  }
+  .padding-bottom-60 {
+    padding-bottom: 56px;
+  }
+  .tab-controls {
+    display: inline-block;
+    margin: 40px 0px 60px 84px;
+  }
+  .lt-ie9 .tab-controls { margin-left: 104px;}
+  .tab-content .content:first-child {
+    background: #ffffff;
+  }
+  .tab-content .content:first-child .shadow-top {
+    padding-top: 0;
+    background: none;
+  }
+  .profile-left {
+    width: 305px;
+    float: left;
+    text-align: center;
+    font-size: 0;
+    margin-top: -65px;
+  }
+  .profile-right {
+    display: block;
+    margin-left: 336px;
+    margin-right: 80px;
+  }
+  .avatar {
+    margin-bottom: 18px;
+  }
+  .avatar img {
+    width: 185px;
+    height: 185px;
+  }
+  .content .title {
+    font-size: 22px;
+    line-height: 18px;
+    margin-bottom: 13px;
+    margin-left: 336px;
+  }
+  .content .sub-title {
+    font-size: 15px;
+    line-height: 18px;
+    margin-bottom: 15px;
+    margin-left: 336px;    
+  }
+  .linkedin {
+    margin-right: 18px;
+    margin-bottom: 4px;
+  }
+  .twitter {
+    margin-bottom: 4px;
+  }
+  .description p {
+    font-size: 15px;
+    line-height: 18px;
+  }
+  .description p + p {
+    margin-top: 16px;
+  }  
+  .no-subtitle .profile-left {
+    margin-top: -34px;
+  }
+  .no-connect .profile-left {
+    margin-top: -34px;
+    width: 269px;
+  }
+  .no-connect .profile-left .avatar {
+    text-align: right;
+    background: none;
+  }
+  .no-connect .avatar img { 
+    margin: 0;
+    float: right;
+  }  
+  .no-connect .profile-right {
+    margin-left: 309px;
+  }  
+  .no-connect .title,
+  .no-connect .sub-title {
+    margin-left: 309px;
+  }
+}

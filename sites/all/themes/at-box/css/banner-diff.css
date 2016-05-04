@@ -1,0 +1,191 @@
+/***** start line 210 - mine, 213 - git ***/
+
+/* New CSS3 styles */
+#login-block .login{
+  float: left;
+  margin: 1px 6px 0 0;
+  padding: 0;
+  border-radius: 20px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+#login-block .login li{  
+  float: left;
+  display: block;
+  position: relative;
+  padding: 0px;
+  height: 30px;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: 'proximanova-regular';
+  line-height: 32px;
+
+  /* border */
+  border: 1px solid #103c5d;
+}
+
+#login-block .login li a{/* gradient */
+  background: -moz-linear-gradient(bottom,  #055fa5 0%, #2089da 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0%,#055fa5), color-stop(100%,#2089da)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(bottom,  #055fa5 0%,#2089da 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(bottom,  #055fa5 0%,#2089da 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(bottom,  #055fa5 0%,#2089da 100%); /* IE10+ */
+  background: linear-gradient(to top,  #055fa5 0%,#2089da 100%); /* W3C */
+}
+
+#login-block .login li:hover a {
+  /* gradient */
+  background: -moz-linear-gradient(bottom,  #0964ab 0%, #2991e2 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0%,#0964ab), color-stop(100%,#2991e2)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(bottom,  #0964ab 0%,#2991e2 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(bottom,  #0964ab 0%,#2991e2 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(bottom,  #0964ab 0%,#2991e2 100%); /* IE10+ */
+  background: linear-gradient(to top,  #0964ab 0%,#2991e2 100%); /* W3C */
+}
+
+#login-block .login li:active a{
+  /* gradient */
+  background: -moz-linear-gradient(bottom,  #0d6db7 0%, #0761a6 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0%,#0d6db7), color-stop(100%,#0761a6)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(bottom,  #0d6db7 0%,#0761a6 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(bottom,  #0d6db7 0%,#0761a6 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(bottom,  #0d6db7 0%,#0761a6 100%); /* IE10+ */
+  background: linear-gradient(to top,  #0d6db7 0%,#0761a6 100%); /* W3C */
+}
+
+#login-block .login .left{border-radius:20px 0 0 20px;border-right:none}
+#login-block .login .right{border-radius:0 20px 20px 0;border-left:none}
+#login-block .login .left a{
+  border-radius: 20px 0 0 20px;
+  box-shadow: inset 0 1px 0px 0px rgba(255, 255, 255, 0.31);
+}
+#login-block .login .right a {
+    border-radius: 0 20px 20px 0;
+  box-shadow: inset 0px 1px 1px 0px rgba(255, 255, 255, 0.45);
+}
+.login li a{
+  color: #FFFFFF;
+  display: block;
+  line-height: 31px;
+  vertical-align: bottom;
+  height: 30px;
+}
+
+.login .left a{
+  padding-left: 24px;
+  padding-right: 13px;
+    text-shadow: 0 -1px 0 #000000;
+    border-right: 1px solid #0e5086;
+}
+
+.login .left a:hover {
+    border-right-color: #031320;
+}
+
+.login .right a {
+  padding-right: 23px;
+  padding-left: 14px; 
+    text-shadow: 0 -1px 0 #000000;
+    border-left: 1px solid #368bcd;
+}
+
+.login .right a:hover {
+    border-left-color: #75b6e8;
+}
+
+/*For IE9 & IE8 */
+.ie9 #login-block .login{
+  border-radius: 0;
+  box-shadow: none;
+}
+.ie9 #login-block .login li,
+.lt-ie9 #login-block .login li{
+  height: 34px;
+  line-height: 35px;
+  margin-top: -2px;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: url(../img/bg-button-blue-menu.png) left 0px no-repeat;
+}
+.ie9 .login li a,
+.lt-ie9 .login li a{
+  padding: 0;
+  line-height: 32px;
+  border: none;
+}
+
+.ie9 #login-block .login .right a,
+.lt-ie9 #login-block .login .right a{
+ box-shadow: none;
+}
+.ie9 #login-block .login .left,
+.lt-ie9 #login-block .login .left{ 
+  background-position: left 0px;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+.ie9 #login-block .login .left:hover,
+.lt-ie9 #login-block .login .left:hover{
+  background-position: left -35px;
+}
+.ie9 #login-block .login .left.active,
+.lt-ie9 #login-block .login .left.active{
+  background-position: left -70px;
+}
+.ie9 #login-block .login .right,
+.lt-ie9 #login-block .login .right{
+  background-position: right 0px;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;    
+}
+.ie9 #login-block .login .right:hover,
+.lt-ie9 #login-block .login .right:hover{
+  background-position: right -35px;
+}
+.ie9 #login-block .login .right.active,
+.lt-ie9 #login-block .login .right.active{
+  background-position: right -70px;
+}
+
+.ie9 .login .left a,
+.lt-ie9 .login .left a{
+  padding-left: 28px;
+  padding-right: 19px;
+}
+.ie9 .login .right a,
+.lt-ie9 .login .right a{
+  padding-right: 22px;
+  padding-left: 15px;
+}
+
+.ie9 #login-block .left a,
+.lt-ie9 #login-block .left a{
+  background: url(../img/bg-button-blue-menu-devide.png) right 0px no-repeat;
+  box-shadow: none;  
+}
+.ie9 #login-block .left a:hover,
+.lt-ie9 #login-block .left a:hover{
+  background-position: right -35px;  
+}
+.ie9 #login-block .login:hover .left a,
+.lt-ie9 #login-block .login:hover .left a {
+  background: url(../img/bg-button-blue-menu-devide.png) right -140px no-repeat;
+}
+
+
+.mobile-adv,.tablet-adv { display: none;}
+
+#banner .button-blue {
+  width: auto;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    #login-block .login li{
+        margin-top: 0;
+    }
+}

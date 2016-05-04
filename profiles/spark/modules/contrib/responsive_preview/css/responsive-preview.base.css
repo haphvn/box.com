@@ -1,0 +1,105 @@
+/**
+ * @file
+ * Base styling for responsive preview.
+ */
+
+/**
+ * Constrain the window height to the client height when the preview is active.
+ */
+.responsive-preview-active {
+  height: 100%;
+  overflow: hidden;
+}
+
+/**
+ * Toolbar tab.
+ */
+.navbar-tab-responsive-preview {
+  display: none;
+}
+/* At narrow screen widths, float the tab to the left so it falls in line with
+ * the rest of the navbar tabs. */
+.js .navbar .bar .navbar-tab-responsive-preview.tab {
+  display: block;
+  float: right; /* LTR */
+  position: relative;
+}
+.navbar-tab-responsive-preview .trigger {
+  display: block;
+}
+/* Device preview options. */
+.navbar-tab-responsive-preview .item-list {
+  display: none;
+  position: absolute;
+  white-space: nowrap;
+  z-index: 1;
+}
+.navbar-tab-responsive-preview.open .item-list {
+  display: block;
+}
+.js .navbar-tab-responsive-preview.tab .options li {
+  float: none;
+}
+
+/**
+ * Preview container.
+ *
+ * The container is kept offscreen after it is built and has been disabled.
+ */
+.responsive-preview {
+  bottom: 0;
+  height: 100%;
+  left: -200%; /* LTR */
+  position: relative;
+  top: 0;
+  width: 100%;
+  z-index: 1050;
+}
+.responsive-preview.active {
+  left: 0; /* LTR */
+  position: fixed;
+}
+.responsive-preview .control {
+  position: absolute;
+}
+.responsive-preview .modal-background {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: static;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+.responsive-preview.active .modal-background {
+  position: fixed;
+}
+
+/**
+ * Preview iframe.
+ */
+.responsive-preview .frame-container {
+  position: absolute;
+  z-index: 100;
+}
+.responsive-preview .frame-container iframe {
+  position: relative;
+}
+
+/**
+ * Override Toolbar styling in the preview iframe.
+ */
+body.navbar-tray-open.responsive-preview-frame {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+.responsive-preview-frame {
+  overflow-x: hidden !important;
+}
+.responsive-preview-frame #navbar-administration {
+  display: none !important;
+}
+.responsive-preview-frame .contextual {
+  display: none !important;
+}

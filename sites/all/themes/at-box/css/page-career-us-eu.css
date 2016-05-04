@@ -1,0 +1,559 @@
+/*#banner .main-banner.career .banner-des h2{ font-family: 'proximanova-semibold'; font-weight: normal;}*/
+#banner .main-banner.career .banner-des h2 a { font-family: 'proximanova-light';}
+.block_sub_nav {height: 34px; background: none;min-width: 320px; margin: 0 auto; clear: both; margin-bottom: 40px; text-align: center;}
+
+/* oocss */
+.oocss-b {
+    display: block
+}
+.oocss-wrap {
+    position: relative
+}
+.oocss-inner-content:before,
+.oocss-inner-content:after {
+    display: table;
+    content: "";
+}
+.oocss-inner-content:after {
+    clear: both
+}
+* + html .oocss-inner-content {
+    zoom: 1
+}
+/* .btn-box.oocss */
+.group-link-bottom ul.list-button li.btn-box.oocss {
+    margin: 0;
+    margin-left: 2.8%;
+    padding: 0;
+    width: 32.8%;
+    background: none;
+}
+/* background */
+.group-link-bottom ul.list-button li.btn-box.oocss .oocss-tr,
+.group-link-bottom ul.list-button li.btn-box.oocss .oocss-bl,
+.group-link-bottom ul.list-button li.btn-box.oocss .oocss-wrap,
+.group-link-bottom ul.list-button li.btn-box.oocss .oocss-inner {
+    background-image: url(../img/bg-oocss-caree.png)
+}
+.group-link-bottom ul.list-button li.btn-box.oocss .oocss-b {
+    position: relative;
+    z-index: 10;
+    background-repeat: no-repeat;
+    font-size: 0;
+}
+.group-link-bottom ul.list-button li.btn-box.oocss .oocss-tr {
+    right: -10px;
+    float: right;
+    width: 10px;
+    height: 10px;
+    background-position: 100% 0;
+}
+.group-link-bottom ul.list-button li.btn-box.oocss .oocss-bl {
+    float: left;
+    width: 10px;
+    height: 10px;
+    background-position: 0 100%;
+}
+.group-link-bottom ul.list-button li.btn-box.oocss .oocss-wrap {
+    margin-right: 10px
+}
+.group-link-bottom ul.list-button li.btn-box.oocss .oocss-inner {
+    position: relative;
+    top: 10px;
+    left: 10px;
+    padding: 0 0 10px 0;
+    background-position: 100% 100%;
+}
+.group-link-bottom ul.list-button li.btn-box.oocss .oocss-inner-content {
+    display: block;
+    padding: 20px 1.5% 20px 10px;
+    background: url(../img/background-oocss-inner.png);
+}
+.group-link-bottom ul.list-button li.btn-box.oocss .oocss-inner-content a {
+    display: table-cell;
+    min-height: 36px;
+    color: #004b85;
+    vertical-align: middle;
+    text-align: left;
+    font-size: 15px;
+}
+.buttons_3 .btnGray {
+    display: inline-block;
+    padding: 9px 23px 8px;
+    height: auto;
+    line-height: 14px;
+}
+#lightbox_close {
+    top: 10px;
+    right: 10px;
+}
+
+#lightbox_close { top: 10px; right: 10px;}
+
+/* Custom tab styles for Careers page
+   ============================================================= */
+   
+.tab-container {
+    font-size: 0;
+}
+.tab-contents-wrapper {
+    position: relative;
+    display: block;
+}
+.tab-controls {
+    display: inline-block;
+    margin: 0px auto 10px auto;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.tab-controls a:first-child {
+    -webkit-border-radius: 5px 0px 0px 5px;
+    -moz-border-radius: 5px 0px 0px 5px;
+    border-radius: 5px 0px 0px 5px;
+}
+.tab-controls a.last-child {
+    -webkit-border-radius: 0px 5px 5px 0px;
+    -moz-border-radius: 0px 5px 5px 0px;
+    border-radius: 0px 5px 5px 0px;
+}
+.tab-controls a:first-child,
+.tab-controls a.last-child {
+    padding: 9px 0px 7px 0px;
+    width: 126px;
+    text-align: center;
+}
+/*** Tabs IE8 ***/
+.lt-ie9 .tab-controls {
+    height: 34px;
+}
+.lt-ie9 .tab-controls a {
+    background: url('../img/bg-btn-rail.png') no-repeat scroll -600px -70px transparent;
+    line-height: 34px;
+}
+.lt-ie9 .tab-controls a span {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    height: 34px;
+}
+.lt-ie9 .tab-controls a:first-child,
+.lt-ie9 .tab-controls a.last-child {
+    padding: 0px;
+    width: 106px;
+    height: 34px;
+    text-align: center;
+    line-height: 34px;
+}
+.lt-ie9 .tab-controls a:first-child {
+    padding-left: 6px;
+    border-right: solid 1px transparent;
+    background: url('../img/bg-btn-rail.png') no-repeat scroll -602px -70px transparent;
+    text-indent: -20px;
+}
+.lt-ie9 .tab-controls a:first-child span {
+    left: -20px;
+    width: 20px;
+    background: url('../img/bg-btn-rail.png') no-repeat scroll left -70px transparent;
+}
+.lt-ie9 .tab-controls a.last-child {
+    padding-right: 6px;
+    text-indent: 20px;
+}
+.lt-ie9 .tab-controls a.last-child span {
+    position: absolute;
+    top: 0;
+    right: -20px;
+    left: auto;
+    display: block;
+    width: 20px;
+    height: 34px;
+    background: url('../img/bg-btn-rail.png') no-repeat scroll right -70px transparent;
+}
+.lt-ie9 .tab-controls a.last-child:before {
+    background: url('../img/bg-btn-rail.png') no-repeat scroll right -70px transparent;
+}
+.lt-ie9 .tab-controls a:hover,
+.lt-ie9 .tab-controls a.active,
+.lt-ie9 .tab-controls a.active + a:hover,
+.lt-ie9 .tab-controls a:hover + a.active {
+    border: none;
+    background: url('../img/bg-btn-rail.png') no-repeat scroll -300px -106px transparent;
+}
+.lt-ie9 .tab-controls a:hover + a,
+.lt-ie9 .tab-controls a.active + a {
+    background: url('../img/bg-btn-rail.png') no-repeat scroll -601px -70px transparent;
+}
+.lt-ie9 .tab-controls a:hover span,
+.lt-ie9 .tab-controls a.active span {
+    right: 0;
+    left: auto;
+    width: 4px;
+    border: none;
+    background: url('../img/bg-btn-rail.png') no-repeat scroll -596px -106px transparent;
+}
+.lt-ie9 .tab-controls a:first-child:hover,
+.lt-ie9 .tab-controls a:first-child.active {
+    border-right: solid 1px #999999;
+    background: url('../img/bg-btn-rail.png') no-repeat scroll -304px -106px transparent;
+}
+.lt-ie9 .tab-controls a:first-child:hover span,
+.lt-ie9 .tab-controls a:first-child.active span {
+    right: auto;
+    left: -20px;
+    width: 20px;
+    border: none;
+    background: url('../img/bg-btn-rail.png') no-repeat scroll left -106px transparent;
+}
+.lt-ie9 .tab-controls a.last-child:hover span,
+.lt-ie9 .tab-controls a.last-child.active span {
+    right: -20px;
+    width: 20px;
+    border: none;
+    background: url('../img/bg-btn-rail.png') no-repeat scroll right -106px transparent;
+}
+      /*** Tabs IE8 ***/
+    .lt-ie9 .tab-controls {      
+      height: 34px; 
+    }
+      .lt-ie9 .tab-controls a{ 
+        line-height: 34px;
+        background: url('../img/bg-btn-rail.png') no-repeat scroll -600px -69px transparent;
+        }
+        .lt-ie9 .tab-controls a span{
+          height: 34px;
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          z-index: 1;
+        } 
+
+        .lt-ie9 .tab-controls a:first-child,
+        .lt-ie9 .tab-controls a.last-child {
+          padding: 0px;
+          width: 106px;  
+          height: 34px;
+          line-height: 34px;  
+          text-align: center;
+        }
+            
+        .lt-ie9 .tab-controls a:first-child {
+          padding-left: 6px;
+          border-right: solid 1px transparent;
+          background: url('../img/bg-btn-rail.png') no-repeat scroll -602px -69px transparent;          
+          text-indent: -20px;
+        }
+        .lt-ie9 .tab-controls a:first-child span {
+          width: 20px;
+          left: -20px;
+          background: url('../img/bg-btn-rail.png') no-repeat scroll left -69px transparent; 
+          
+        }
+        .lt-ie9 .tab-controls a.last-child {
+          padding-right: 6px;
+          text-indent: 20px;
+        }
+        .lt-ie9 .tab-controls a.last-child span {
+          display: block;
+          position: absolute;
+          width: 20px;
+          height: 34px;
+          left: auto;
+          top: 0;
+          right: -20px;
+          background: url('../img/bg-btn-rail.png') no-repeat scroll right -69px transparent;
+        }
+        .lt-ie9 .tab-controls a.last-child:before {
+          background: url('../img/bg-btn-rail.png') no-repeat scroll right -69px transparent; 
+        }
+        .lt-ie9 .tab-controls a:hover,
+        .lt-ie9 .tab-controls a.active,
+        .lt-ie9 .tab-controls a.active + a:hover,
+        .lt-ie9 .tab-controls a:hover + a.active {
+          border: none;
+          background: url('../img/bg-btn-rail.png') no-repeat scroll -300px -105px transparent;
+        }
+        .lt-ie9 .tab-controls a:hover + a,
+        .lt-ie9 .tab-controls a.active + a {
+          background: url('../img/bg-btn-rail.png') no-repeat scroll -601px -69px transparent;
+        }
+        .lt-ie9 .tab-controls a:hover span,
+        .lt-ie9 .tab-controls a.active span {
+          border: none;
+          width: 4px;
+          left: auto;
+          right: 0;
+          background: url('../img/bg-btn-rail.png') no-repeat scroll -596px -105px transparent;
+        }
+        
+        .lt-ie9 .tab-controls a:first-child:hover,
+        .lt-ie9 .tab-controls a:first-child.active {
+          background: url('../img/bg-btn-rail.png') no-repeat scroll -304px -105px transparent;          
+          border-right: solid 1px #999999;
+        }
+
+        .lt-ie9 .tab-controls a:first-child:hover span,
+        .lt-ie9 .tab-controls a:first-child.active span {
+          border: none;
+          width: 20px;
+          left: -20px;
+          right: auto;
+          background: url('../img/bg-btn-rail.png') no-repeat scroll left -105px transparent;
+        }
+        .lt-ie9 .tab-controls a.last-child:hover span,
+        .lt-ie9 .tab-controls a.last-child.active span {
+          border: none;
+          width: 20px;
+          right: -20px;
+          background: url('../img/bg-btn-rail.png') no-repeat scroll right -105px transparent;
+        }
+
+
+
+
+/************************************************************************************
+smaller than 720 
+*************************************************************************************/
+@media screen and (max-width: 719px) {
+
+  .main-banner .banner-img {
+    height: 150px;
+  }
+  .career-us .main-banner .banner-img {
+    height: 200px;
+  }
+  .group-link-bottom ul.list-button li.btn-box.oocss {
+    float: none;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  .content_main.bottom_image > h2{font-size: 22px}
+    /* .shadow-top {background: url('../img/line-bottom-career-320.png') center bottom no-repeat;} */
+
+
+    .content_main.bottom_image { /* background: url('../img/line-bottom-career-320.png') center bottom no-repeat; */
+      padding: 35px 30px 0 30px; margin: 0;
+    }
+    .group-link-bottom { padding-top: 3px}
+    .content_main.bottom_image .content { padding-right: 0px; padding-bottom: 17px;}
+    .content_main.bottom_image .features { display: none;}
+    .content_grid { margin: 0 6% 0 9%;  padding-top: 7px;}
+
+    .content_grid li { display: block; width: 100%; margin: 16px 0 19px 0;}
+    .content_grid li img { width: 42px; height: 42px; margin-right: 0; margin-left: 0;}
+    .content_grid li .text { overflow: hidden; margin: -3px 0 0 52px; padding-right: none;}
+    .content_grid li .text strong, .content_grid li .text span { display: block;}
+    .content_grid li .text strong { }
+    .group-link-bottom ul.list-button { padding: 0 7.18%; margin: 0; }
+    .group-link-bottom ul.list-button li { margin-bottom: 40px; float: none; text-align: center; }
+    .group-link-bottom ul.list-button li:first-child { margin-top: 0px; width: 100% }
+     .group-link-bottom ul.list-button li.btn-box { 
+      padding: 31px 7.6% 29px 7.6%;
+      width: 79%;
+      background: #f8f6f5; 
+    }
+    .block_sub_nav {margin-top:8px; margin-bottom: 0px;}
+    .content_main.bottom_image .content p {
+      margin-top: 15px;
+    }
+    .content_grid ul {
+      padding-bottom: 20px;
+    }
+    .buttons_3 {
+      padding-top: 38px
+    }
+  .sub-title {
+    margin-left: 9%;
+    font-size: 15px;
+    padding-top: 15px;
+    margin-bottom: -4px;
+  }
+
+
+
+}
+/************************************************************************************  
+equal to 720 to smaller than 977
+*************************************************************************************/
+@media screen and (min-width: 720px) and (max-width: 977px) { 
+    .main-banner .banner-img {
+        height: 385px
+    }
+    .main-banner .banner-img img {
+        max-width: none
+    }
+    .group-link-bottom ul.list-button li.btn-box.oocss {
+        width: 28%
+    }
+    .block_sub_nav {
+        margin: 0 auto;
+        min-width: 366px;
+        width: 366px;
+    }
+    #main-content {
+        clear: both
+    }
+    .content_main.bottom_image {
+        padding-top: 52px
+    }
+    .content_main.bottom_image .features {
+        display: block;
+        margin-bottom: 60px;
+    }
+    .content_main.bottom_image .features > h3 {
+        font-size: 18px;
+        line-height: 18px;
+    }
+    .content_main.bottom_image .features li {
+        clear: left;
+        font-size: 15px;
+        line-height: 18px;
+    }
+    .content_main.bottom_image .features li:nth-child(2n) {
+        float: right;
+        clear: right;
+    }
+    .content_main.bottom_image > h2 {
+        font-size: 38px;
+        font-family: 'proximanova-light';
+    }
+    /* .content_main.bottom_image { background: url('../img/line-bottom-career-720.png') center bottom no-repeat; */
+    /* padding-bottom: 3px; */
+    .content_main.bottom_image .content {
+        padding-right: 0
+    }
+    /* .content_grid li img {margin-right: 20px; */
+    .group-link-bottom ul.list-button li.btn-box {
+        margin-left: 7%;
+        padding: 31px 15px 31px 18px;
+        width: 23.47%;
+    }
+    .group-link-bottom {
+        text-align: center
+    }
+    .group-link-bottom ul.list-button {
+        overflow: visible;
+        margin: 0 auto;
+        padding-right: 0;
+        padding-left: 0;
+        font-size: 0;
+    }
+    .group-link-bottom ul.list-button li {
+        display: inline-block;
+        float: none;
+        vertical-align: middle;
+    }
+    .group-link-bottom ul.list-button li:first-child {
+        margin-top: 0
+    }
+    .buttons_3 {
+        padding: 54px 0 43px 0
+    }
+    .content_main.bottom_image .content {
+        padding-bottom: 25px
+    }
+    .content_main.bottom_image .features ul {
+        padding-top: 8px;
+        padding-bottom: 1px;
+    }
+    .content_grid ul {
+        padding-top: 48px
+    }    
+    .content_grid {
+        margin: 0 0 0 59px;
+        padding-bottom: 48px;
+    }
+    .content_grid.career-us {
+        margin: 0 5.55%;
+        font-size: 0;
+    }
+    .content_grid.career-us li {
+        float: none;
+        display: inline-block;
+        vertical-align: top;
+    }
+    .content_grid.career-us li img {
+        margin-left: 0;
+    }
+
+    .lt-ie9 .group-link-bottom ul.list-button li:first-child {
+        margin-right: 30px
+    }
+    .sub-title {
+        margin-bottom: -50px;
+        margin-left: 59px;
+        padding-top: 56px;
+        font-size: 15px;
+    }
+    .content_main.bottom_image .content a {
+        display: inline-block
+    }
+}
+@media screen and (min-width: 978px) { 
+    .main-banner .banner-img {
+        height: 385px
+    }
+    .buttons_3 {
+        padding: 57px 0 43px 0
+    }
+    .block_sub_nav {
+        /* margin-top: 57px;*/
+        margin-bottom: 20px;
+    }
+    .content_main.bottom_image {
+        padding-top: 52px
+    }
+    .content_main.bottom_image .content {
+        padding-right: 175px
+    }
+    .group-link-bottom ul.list-button {
+        padding: 3px 0 3px 83px;
+    }
+    .group-link-bottom ul.list-button li.btn-box {
+        margin-left: 29px;
+        padding: 32px 8px 32px 21px;
+        width: 244px;
+    }
+    .lt-ie9 .group-link-bottom ul.list-button li.btn-box {
+        margin-left: 30px
+    }
+    .content_main.bottom_image {
+        background-color: #fff
+    }
+    .group-link-bottom ul.list-button li:first-child {
+        margin-right: 20px
+    }
+    .lt-ie9 .group-link-bottom ul.list-button li:first-child {
+        margin-right: 0;
+        padding-right: 10px !important;
+    }
+    .lt-ie9 .group-link-bottom ul.list-button li:first-child {
+        margin-right: 30px
+    }
+    .content_grid {
+        padding-bottom: 48px;
+    }
+    .content_grid li {
+        position: relative
+    }
+
+
+    .content_grid.career-us li img {
+        margin-left: 0;
+    }
+
+    .content_grid li .text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-top: -3px;
+        padding-left: 0;
+    }
+    .sub-title {
+        margin-bottom: -4px;
+        margin-left: 84px;
+        padding-top: 15px;
+        font-size: 18px;
+    }
+}

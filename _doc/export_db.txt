@@ -1,0 +1,1 @@
+mysqldump --skip-extended-insert --compact --no-create-info box -hlocalhost -uroot -p123456 > D:\box_data.sql

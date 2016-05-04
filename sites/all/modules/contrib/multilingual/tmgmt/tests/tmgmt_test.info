@@ -1,0 +1,13 @@
+name = Translation Management Test plugins
+package = Translation Management
+core = 7.x
+hidden = TRUE
+dependencies[] = tmgmt
+files[] = tmgmt_test.plugin.inc
+
+; Information added by drupal.org packaging script on 2013-04-23
+version = "7.x-1.0-alpha3"
+core = "7.x"
+project = "tmgmt"
+datestamp = "1366748712"
+

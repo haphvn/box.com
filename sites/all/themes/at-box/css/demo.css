@@ -1,0 +1,167 @@
+.col-two{
+	width: 50%;
+	float: left;
+	position: relative;
+}
+.col-two img{
+	height: auto;
+	max-width: 100%;
+	float: left;
+}
+.col-text{
+
+}
+.pad-left-right{
+	width:38.24131%;
+	padding-left:5.62372% ;
+	padding-right: 6.07903%;
+}
+.padding-left{
+ 	padding-left:5.62372%;
+ 	width:44.37628%;
+}
+.padding-right{
+ 	padding-right: 6.13497%;
+ 	width:38.24131%;  
+}
+.col-less{
+	width: 46.01227%;
+}
+.col-less2{
+ 	width:36.70757%; 
+ 	padding-right:1.53374%;
+}
+.col-over{
+	width:51.12474%;
+}
+.col-over1{
+	width: 54.19223%;
+}
+.col-over2{
+	width: 56.13497%;
+}
+.pad40{
+	padding-top: 40px;
+}
+.pad65{
+	padding-top: 60px;
+}
+.col-right{
+	width:38.24131%;
+	padding-right: 7.56646%;
+}
+.title-header{
+	width: 100%;
+	clear: both;
+	padding-bottom: 9px;	
+}
+.title-header h2{
+	font-size: 22px; color: #747679;
+	font-family: 'proximanova-regular';
+	margin: 0;
+	font-weight: normal;
+	padding: 0;
+}
+.col-content{
+	width: 100%;
+	clear: both;
+}
+.col-content p{
+	font-family:'proximanova-regular';	
+	width: 100%; clear: both;
+	margin: 0;
+	color: #747679;
+	font-size: 15px;
+	font-weight: normal;
+	padding: 0;
+	line-height: 18px;	
+	padding-bottom: 5px;
+}
+.read-detail{
+	margin: 0;
+	color: #004b85;
+	font-size: 15px;
+	font-weight: normal;
+	padding:0 0px 5px 0;
+	/*background: url(../img/arrow-icon.png) right 4px no-repeat;*/
+}
+.read-detail a{
+	color: #004b85;
+	text-decoration: none;	
+}
+.read-detail a:hover{
+	text-decoration: underline;	
+}
+.col-two .list-infor{
+	width: 100%;
+	clear: both;
+	padding-top: 41px;
+}
+.col-two .list-infor ul{
+	margin: 0;
+	padding: 0 0 56px 0;
+	float: left;
+}
+.col-two .list-infor ul li{
+	float: left; width: 100%; clear: both;
+	padding-bottom: 17px;
+}
+.col-two .list-infor ul li:last-of-type{
+	padding-bottom: 0;
+}
+
+.col-two .list-infor ul li span{
+	width:96px;
+	float: left;
+	height:58px;
+	display:block;
+}
+.col-two .list-infor span.folder{
+	background: url(../img/icon_content.png) 30px 6px no-repeat;
+}
+.col-two .list-infor span.share{
+	background: url(../img/icon_content.png) 30px -54px no-repeat;
+}
+.col-two .list-infor span.messages{
+	background: url(../img/icon_content.png) 30px -115px no-repeat;
+}
+.col-two .list-infor span.share-red{
+	background: url(../img/icon_content.png) 29px -172px no-repeat;
+}
+.col-two .list-infor span.control{
+	background: url(../img/icon_content.png) 29px -232px no-repeat;
+}
+.col-two .list-infor span.track{
+	background: url(../img/icon_content.png) 29px -293px no-repeat;
+}
+.col-two .list-infor ul li a{
+	font-family:'proximanova-regular';
+	font-size: 15px;
+	color: #0b2648;
+	line-height: 1px;
+	font-weight: normal;
+}
+.col-two .list-infor ul li p{
+	font-family:'proximanova-regular';
+	font-size: 15px;
+	color: #747679;
+	font-weight: normal;
+	margin:0 0 0 96px;
+	padding: 0;
+	line-height: 18px;
+}
+.col-two .list-infor ul li p.spacing{
+	letter-spacing:-0.2px;
+}
+.col-right{
+	float: right;
+}
+.img-desktop{
+	display: block;
+}
+.img-tablet{
+	display: none;
+}
+.img-mobile{
+	display: none;
+}

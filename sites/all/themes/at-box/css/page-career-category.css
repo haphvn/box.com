@@ -1,0 +1,294 @@
+.main-banner .banner-des h2 span{
+  color: #00AEF0;
+}
+
+.main-banner .banner-des a{
+  color: #00AEF0;
+}
+
+.t12_sec2 .shadow-top {
+  padding-top: 56px;
+  padding-bottom: 55px;
+}
+  .t12_sec2 .title-header h2 { padding-bottom: 13px; margin-right: 20px;  line-height: 20px; font-family: 'proximanova-semibold'; }
+  .t12_sec2 .col-content p {font-family: 'proximanova-light'; color: #999; }
+
+.quotes { margin: 0; padding: 0; }
+  .quotes li { float: left; width: 31.3%; margin-left: 2.9%; }
+    .quotes li:first-child { margin-left: 0; }
+    .quotes li img { width: 100%; height: 161px; }
+
+.block-in {  float: left; }
+.block-in .shadow-top {
+  padding: 55px 5.52% 55px; width: 88.96%;
+}
+
+.quote-3 h2, .open_positions h2 { margin: 0 0 14px; font-size: 22px; line-height: 26px; font-family: 'proximanova-semibold'; font-weight: normal; color: #747679; }
+  .quote-3 .intro { font-family: 'proximanova-light'; font-size: 15px; line-height: 18px; color: #999; margin-bottom: 36px; }
+    .quote-3 .intro a { color: #004b85; font-family: 'proximanova-light'; }
+
+.quotes p { margin: 24px 0 7px 0; font-size: 18px; font-family: 'proximanova-light';letter-spacing: -1px; word-spacing: 0px; line-height: 22px; }
+  .quotes p:before {
+    display: block;
+    /*background: transparent url('../img/ico-quote-small.png') left top no-repeat;*/
+    background: transparent url('../img/quote-open.svg') 0 bottom no-repeat;
+    background-size: 100% 100%; 
+    width: 18px;
+    margin-bottom: 5px;
+    height: 21px;
+    content: '';
+    /*
+    content: open-quote;
+    font-size: 90px;
+    line-height: 80px;*/
+  }
+  .quotes p:after {
+    display: inline-block;
+    /*background: transparent url('../img/ico-quote-small.png') left bottom no-repeat;*/
+    background: transparent url('../img/quote-close.svg') 0 bottom no-repeat;
+    background-size: 100% 100%;     
+    width: 18px;
+    height: 21px;
+    margin-left: 5px;
+    margin-top: 6px;
+    content: '';
+    vertical-align: top;
+    /*content: close-quote;
+    vertical-align: top;
+    position: relative;   
+    font-size: 90px;
+    line-height: 80px;*/
+  }
+  .lt-ie9 .quotes p:before {
+    background: transparent url('../img/ico-quote-small.png') left top no-repeat;
+  }
+  .lt-ie9 .quotes p:after {
+    background: transparent url('../img/ico-quote-small.png') left bottom no-repeat;
+  }
+  .quotes p strong { font-weight: normal; font-family: 'proximanova-semibold'; }
+.quotes li span { font-size: 12px; }
+
+.open_positions .shadow-top { padding-bottom: 49px;}
+.open_positions ul { margin: 0; padding: 0; width: 107%; }
+  .position-list li { margin: 0 3.22% 7px 0; width: 43%; float: left; font-family: 'proximanova-light'; font-size: 15px; line-height: 18px; color: #004b85; }
+  .position-list a {
+    color: #004b85;
+    white-space: nowrap;
+  }
+  
+
+.career-section-list p, .quote-3 .quotes p, .quote-3 .quotes span { color: #999; font-family: 'proximanova-light'; }
+  .quote-3 .quotes span strong { color: #747679; font-weight: normal; font-family: 'proximanova-semibold'; }
+
+.career-section-list.line-no-shadow { padding: 56px 5.52%; }
+.career-section-list .content p + p { margin-top: 16px; }
+.career-section-list .title-header h2 {
+  font-family: 'proximanova-light';
+}
+.career-section-list .title-header h2 a{
+  color: #00AEF0;
+  font-family: 'proximanova-light';
+}
+.career-section-list .title-header span{
+   color: #00AEF0;
+  font-family: 'proximanova-light'; 
+}
+
+.career-section-list .features {
+  margin-left: 58px;
+}
+
+.features .features-list li {
+  width: 46%;
+  margin-right: 1%;
+}
+@media screen and (max-width: 719px) {
+  .main-banner-content .banner-img {
+    height: 200px;
+  }
+
+  .t12_sec2 .shadow-top {
+    padding-top: 35px;
+    padding-bottom: 0px;
+  }
+  .t12_sec2 .image_bottom{
+    margin-top: 30px;
+  }
+  .t12_sec2 .title-header h2 {
+    margin-right: 0;
+    font-size: 15px;
+  }
+  .career-section-list.line-no-shadow { padding: 37px 9.9375% 35px;  width: 81.25%; }
+  .career-section-list .features { margin-left: 0;}
+  .features .features-list li {
+    width: 100%;    
+  }
+
+  .col-two img {
+      max-width: none;
+      width: 100%;
+  }  
+
+}
+@media screen and (min-width: 720px) and (max-width: 977px) {
+  .main-banner .banner-img {
+    height: 385px;
+  }
+  .main-banner .banner-img img {
+    max-width: none;
+    float: right;
+  }
+  .career-section-list .features { margin-left: 0;}
+  .features .features-list li {
+    width: 100%;
+    
+  }
+  .t12_sec2 .shadow-top {
+    padding-top: 55px;
+    padding-bottom: 56px;
+  }
+  .t12_sec2 .title-header { margin-left: 9.15%;}
+  .t12_sec2 .col-content {margin-left: 9.15%;}
+
+  .quotes li {
+    width: 43.59375%;
+    float: left;
+  }
+  .quotes li + li {
+    float: right;
+    margin-left: 0;
+  }
+  .quotes li.hidden {
+    display: none;
+  }
+
+  .quotes li img {
+    height: auto;
+  }
+  .list-apps .desc { border-left: none;}
+  .list-apps .desc a { display: inline-block; white-space: nowrap; }
+  .block-in .shadow-top {
+      padding-left: 5.55%;
+      padding-right: 5.55%;
+      width: 88.9%;
+  } 
+  .open_positions ul { width: 114.0625%;}
+  .position-list li { margin: 0 8.21% 7px 0; width: 38.9%;}
+  .career-section-list .content {
+    float: none;
+    padding-right: 0%;
+    width: 85%;
+  }
+  .career-section-list .features {
+    float: none;
+    width: 80%;
+    margin-left: 60px;
+  }
+
+  /*for t12 customersuccess page */
+  .t12-customersuccess,
+  .t12-engineer,
+  .t12-ops,
+  .t12-techops,
+  .t12-university {
+    background: url("../img/T12-white-section2-720.jpg") no-repeat scroll left top transparent;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+  }
+
+  .lt-ie9 .t12-customersuccess,
+  .lt-ie9 .t12-engineer,
+  .lt-ie9 .t12-ops,
+  .lt-ie9 .t12-techops,
+  .lt-ie9 .t12-university {
+    background: none;
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader( src='../img/T12-white-section2-720.jpg', sizingMethod='scale')";
+  }
+
+  .t12-design,
+  .t12-product,
+  .t12-salebd,
+  .t12-businessops,
+  .t12-marketing {
+    background: url("../img/T12-blue-section2-720.jpg") no-repeat scroll center top transparent;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;    
+    min-height: 390px;
+  }
+  .lt-ie9 .t12-design,
+  .lt-ie9 .t12-product,
+  .lt-ie9 .t12-salebd,
+  .lt-ie9 .t12-businessops,
+  .lt-ie9 .t12-marketing {
+    background: none;
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader( src='../img/T12-blue-section2-720.jpg', sizingMethod='scale')";
+  }
+  .t12-design .title-header h2,
+  .t12-design .col-content p,
+  .t12-product .title-header h2,
+  .t12-product .col-content p,
+  .t12-salebd .title-header h2,
+  .t12-salebd .col-content p,
+  .t12-businessops .title-header h2,
+  .t12-businessops .col-content p,
+  .t12-marketing .title-header h2,
+  .t12-marketing .col-content p { color: #fff;}  
+
+
+}
+@media screen and (min-width: 978px){
+
+  .career-section-list .content{
+    width: 82%;
+  }
+  .career-section-list .features{
+    margin-left: 35px;
+  }
+  .features .features-list li{
+      margin-right:2.5%;
+      width: 45%;
+  }
+
+  /*for t12 clone page */
+  .t12-customersuccess,
+  .t12-engineer,
+  .t12-ops,
+  .t12-techops,
+  .t12-university {
+    background: url("../img/T12-white-section2.jpg") no-repeat scroll left top transparent;
+  }
+
+  .t12-design,
+  .t12-product,
+  .t12-salebd,
+  .t12-businessops,
+  .t12-marketing {
+    background: url("../img/T12-blue-section2.jpg") no-repeat scroll left top transparent;
+    min-height: 390px;
+  }
+
+  .t12-design .title-header h2,
+  .t12-design .col-content p,
+  .t12-product .title-header h2,
+  .t12-product .col-content p,
+  .t12-salebd .title-header h2,
+  .t12-salebd .col-content p,
+  .t12-businessops .title-header h2,
+  .t12-businessops .col-content p,
+  .t12-marketing .title-header h2,
+  .t12-marketing .col-content p { color: #fff;}
+
+  .t12-customersuccess .shadow-top,
+  .t12-design .shadow-top,
+  .t12-engineer .shadow-top,
+  .t12-ops .shadow-top,
+  .t12-product .shadow-top,
+  .t12-salebd .shadow-top,
+  .t12-techops .shadow-top,
+  .t12-university .shadow-top,
+  .t12-businessops .shadow-top,
+  .t12-marketing .shadow-top { background: none;}
+}
+/**/

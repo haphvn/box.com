@@ -1,0 +1,392 @@
+/* Banner */
+.main-banner .banner-img{
+  overflow: hidden;
+}
+.main-banner .banner-des{
+  position: absolute;
+  top: 60px;
+  left: 5.11247%;
+  z-index: 2;
+  font-family: 'proximanova-light';
+}
+.main-banner .banner-des h2 { 
+  width: auto; 
+  color: #FFF; 
+  font-family: 'proximanova-light'; 
+  line-height: 38px; 
+}
+.main-banner .banner-des span {
+  display: block;
+  width: 240px;
+}
+.main-banner .banner-des a, .main-banner .banner-des a:hover, .main-banner .banner-des a:visited{
+  color: #00aef0;
+}
+
+/* Content Main */
+.content-main{
+/*  padding: 51px 5.4% 0;*/
+  overflow: hidden;
+}
+.content-main .module{
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 60px;
+}
+.content-main .module:last-child{
+  padding-bottom: 0;
+}
+.content-main .module .left{
+  float: left;
+  width: 50%;
+}
+.content-main .module .padding-left{
+  padding-left: 54px;
+  width: auto;
+}
+.content-main .module .right{
+  float: left;
+  width: 50%;
+}
+.content-main .module .padding-right{
+  padding-right: 54px;
+  width: auto;
+}
+.content-main .module h2{
+  margin: 0;
+  font-size: 22px;
+}
+.content-main .module .content{
+  margin: 38px 0;
+}
+.content-main .module .content p{
+  margin: 0;
+}
+.content-main .module ul{
+  margin: 0 0 0 86px;
+  padding: 0;
+}
+.content-main .module ul li{
+  margin-top: 20px;
+}
+.content-main .module ul h3{
+  margin: 0 0 12px;
+  font-size: 15px;
+}
+.content-main .module .top ul{
+  margin: 0;
+}
+.content-main .module .top ul li{
+  display: inline-block;
+  float: left;
+  width: 31%;
+  margin-right: 30px;
+}
+.content-main .module:last-child .bottom{
+  padding-bottom: 5px;
+  background: url(../img/line1.png) no-repeat center bottom;
+  display: inline-block;
+}
+.content-main .module .top ul li{
+  margin-top: 0;
+}
+.content-main .module .top ul li:last-child{
+  margin-right: 0;
+}
+.content-main .module .top ul li img{
+  display: block;
+  float: none;
+  margin: 0 auto;
+  margin-bottom: 24px;
+}
+.content-main .module img{
+  float: left;
+  position: relative;
+}
+.content-main .module .right .img_wrapper img{
+  float: right;
+}
+.content-main .module img[alt="Get and Share Big Files"]{
+  top: 60px;
+}
+.content-main .module img[alt="Box for iPhone, iPad and More"]{
+  top: 100px;
+}
+.content-main .module a{
+  color: #004b85;
+  text-decoration: none;
+}
+
+/**/
+
+.mobile-content { display: none;}
+
+/************************************************************************************
+smaller than 320 
+*************************************************************************************/
+@media screen and (max-width: 319px) {
+  .content-main .module .left,
+  .content-main .module .right{
+    width: 100%;
+  }
+  .content-main .module .padding-left{
+    padding-left: 0;
+  }
+  .content-main .module .padding-right{
+    padding-right: 0;
+  }
+  .content-main .module .top ul li{
+    display: block;
+    float: none;
+    width: 100%;
+  }
+  .content-main .module img[alt="Get and Share Big Files"],
+  .content-main .module img[alt="Box for iPhone, iPad and More"]{
+    top: auto;
+  }
+}
+/************************************************************************************
+smaller than 720 
+*************************************************************************************/
+@media screen and (max-width: 719px) {
+  .img-desktop { display: none;}
+  .img-tablet { display: none;}
+  .img-mobile { display: block;}
+  .mobile-hidden { display: none;}
+  .mobile-content {display: block;}
+  .page-iframe{
+
+  }
+  .page-iframe iframe {
+    border: none;
+    min-height: 1px;
+  }
+  .main-banner .banner-img{
+    height: 150px;
+  }
+  img.mobile{
+    display: block;
+  }
+  .col-content {display: block;}
+  .image_bottom{position: relative;}  
+  .main-banner .banner-des {
+    top: 31px;
+    left: 9.375%;
+  }
+  .main-banner .banner-des h2,
+  .main-banner.personal .banner-des h2{
+    font-size: 30px;
+    line-height: 30px;
+  }
+  .main-banner .banner-des span {
+/*    color: #00AEF0;*/
+  }
+  .col-two {
+    float: none;
+    padding: 0px;
+  }
+  .col-left-full,
+  .col-right-full {
+    width: 100%;
+  }
+  .col-left{
+    width: auto;
+    padding: 0px 9.375%;
+  }
+  .col-right{
+    width: auto;
+    padding: 0px 9.375%;
+  }  
+
+  .personal-section-list.line-no-shadow {
+      padding-bottom: 56px;
+      padding-top: 55px;
+  }
+  .content.personal-section-list {
+      padding-left: 5.52%;
+      padding-right: 5.52%;
+      width: 88.96%;
+  }
+
+  .personal-section-list .title-header h2 {
+    font-size: 22px;
+    line-height: 26px;
+  }
+
+  .content.personal-section-list {
+      padding-left: 9.375%;
+      padding-right: 9.375%;
+      width: 81.25%;
+  }
+  .personal-section-list.line-no-shadow {
+      padding-bottom: 36px;
+      padding-top: 35px;
+  }  
+  .personal-section-list .content {
+    margin-top: 12px;
+  }
+  .personal-section-list .content p + p {
+    margin-top: 16px;
+  }
+  .personal-section-list .features {
+    margin-left: 0;
+    margin-top: 19px;
+  }
+  .features .features-list li {
+    float: none;
+    margin-right: 0;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  .col-content p + p {
+    margin-top: 16px;
+  }
+  .apps_3 .shadow-top { padding-top: 37px;}
+  .list-apps {
+    margin: 0;
+    padding: 0 9.375%;
+  }
+  .list-apps li {
+    float: none;
+    margin-left: 0;
+    width: auto;
+    margin-bottom: 33px;
+  }
+  .list-apps li:first-child {
+    float: none;
+    margin-left: 0;
+    width: auto;
+    margin-bottom: 33px;
+  }
+  .list-apps .desc .title{
+    position: relative;
+    top: -1px;
+    margin-bottom: 3px;
+  }
+  .list-apps a{ margin-bottom: 1px;}
+  .list-apps .desc {
+    margin-left: 51px;
+  }
+  .list-apps .img-browser-feature {
+    width: 32px;
+    height: 32px;
+  }
+  .list-apps .img-browser-feature img {
+    width: 32px;
+    height: 32px;
+  } 
+  .page-iframe {
+    margin: 8px 9.375% 35px 9.375%;
+
+  }
+}
+
+/************************************************************************************
+equa 720 and smaller than 977
+*************************************************************************************/
+@media screen and (min-width: 720px) and (max-width: 977px) {
+  .img-desktop {
+    display: none;
+  }
+  .img-mobile {
+    display: none;
+  }
+  .img-tablet {
+    display: block;
+  }
+
+  .main-banner .banner-des {
+    left: 5.55%;
+    top: 60px;
+  }
+  .shadow-top{
+    padding-top: 60px;
+  }
+
+  .content.personal-section-list {
+      padding-left: 5.55%;
+      padding-right: 5.55%;
+      width: 88.9%;
+  }  
+
+  .personal-section-list .content {
+    width: 47.8125%;
+    padding-right: 4.6875%;
+    float: left;
+  }
+
+  .personal-section-list .features{
+    float: right;
+    margin: 51px  0 0 4.375%;
+    width: 43.125%;
+  }
+
+  .features .features-list li {
+    float: none;
+    margin: 0 0 16px 0;
+    width: 100%;
+  }
+  .list-apps {
+    margin: -3px 5.5% 56px;
+    padding: 0;
+    width: auto;
+  }
+  .list-apps li {
+    width: 24.46875%;
+    margin-left: 0;
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+  .list-apps li + li {
+    width: 27.0625%;
+  }
+  .list-apps li + li + li{
+    width: 24.46875%;
+    padding-right: 0px;
+  }
+  .list-apps li:first-child{    
+    margin-left: 0;
+    padding-left: 0;
+  }
+  .list-apps .img-browser-feature {
+    float: none;
+    margin:0px auto;
+  }
+  
+  .list-apps .desc {
+    margin-left: -40px;
+    padding-left: 40px;
+    color: #999999;
+    border-left: solid 1px #e6e6e6;
+    padding-top: 19px;
+  }
+  .list-apps li:first-child .desc{ 
+    margin-left: 0px;
+    padding-left: 0px;
+    border-left: none;
+  }
+  .col-left{
+    padding-left: 5.55%;
+    width: 46.66%;
+  }
+  .col-right{
+    padding-right: 5.55%;
+    width: 42.24%;    
+    float: right;
+  }
+  .col-right-full{
+    padding-right:0;
+    width: 47.79%;    
+    float: right;
+  }
+  .col-content p + p {
+    margin-top: 18px;
+  }
+}
+
+/************************************************************************************
+bigger than 978
+*************************************************************************************/
+@media screen and (min-width: 978px){
+}
+

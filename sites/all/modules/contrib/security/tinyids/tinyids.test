@@ -1,0 +1,158 @@
+<?php
+
+/**
+ * @file
+ * Tests for tinyids.module.
+ *
+ * @TODO these tests need way more work.
+ */
+
+class TinyidsIntrusionRulesFunctionality extends DrupalUnitTestCase {
+
+  /**
+   * Returns information about these tests.
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Tiny-IDS scanning functionality',
+      'description' => 'Tests the default intrusion rules.',
+      'group' => 'Tiny-IDS',
+    );
+  }
+
+  /**
+   * Sets up tinyids for testing.
+   */
+  function setUp() {
+    // Enable tinyids.
+    parent::setUp('tinyids');
+  }
+
+  /**
+   * Unit test against false positive detection.
+   */
+  public function testTinyidsFalsepositive() {
+    // Plain-text test.
+    $haystack = array(
+      'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+      'As if you needed anyone else to tell you: if you live in the U.S., your taxes are due! In an uncharacteristic fit of responsibility (I’m still not sure where it came from), I managed to get mine in order a few weeks ago. Fingers crossed that I didn’t mess them up too badly!
+
+      Whenever tax season rolls around, I think of three passages from the Gospels in which Jesus discusses money, wealth, and taxes. In the first passage, Jesus puts wealth in context in a way I’ve always found challenging. Read Matthew 6:24-27 (NLT):
+
+      “No one can serve two masters. For you will hate one and love the other; you will be devoted to one and despise the other. You cannot serve both God and money.
+
+      “That is why I tell you not to worry about everyday life—whether you have enough food and drink, or enough clothes to wear. Isn’t life more than food, and your body more than clothing? Look at the birds. They don’t plant or harvest or store food in barns, for your heavenly Father feeds them. And aren’t you far more valuable to him than they are? Can all your worries add a single moment to your life?”',
+      'Building the test
+      The first thing to do is to create a test file. Inside the module folder, create a new .test. In our example simpletest_example.test
+
+      In order for Drupal to detect your tests, you need to add the path to your test file inside a \'files[]\' parameter in your module\'s .info file. In this case, inside simpletest_example.info, we\'ll add:
+
+      files[] = simpletest_example.test
+      Now go back to \'simpletest_example/simpletest_example.test\' and create a class for the unit tests. This class will extend DrupalUnitTestCase:',
+    );
+    $report = tinyids_scan($haystack, array('Test'));
+    $this->assertFalse($report, 'False positive detection (Plain-text).');
+
+    // Harmless HTML test.
+    $haystack = array(
+      '<dl><dt>PAReview: README.txt</dt><dd>Please take a moment to make your README.txt follow the <a href="http://drupal.org/node/447604">guidelines for in-project documentation</a>. <code><dl><dt>README.txt</dt><dd>Please take a moment to make your README.txt follow the <a href="http://drupal.org/node/447604">guidelines for in-project documentation</a>.</dd></dl></code></dd><dt>PAReview: project page:<dt><dd>Please take a moment to make your project page follow <a href="http://drupal.org/node/997024">tips for a great project page</a>.<code><dl><dt>project page</dt><dd>Please take a moment to make your project page follow <a href="http://drupal.org/node/997024">tips for a great project page</a>.</dd></dl></code></dd><dt>PAReview: Master Branch</dt><dd>It appears you are working in the "master" branch in git. You should really be working in a version specific branch. The most direct documentation on this is <a href="http://drupal.org/node/1127732">Moving from a master branch to a version branch.</a> For additional resources please see the documentation about <a href="http://drupal.org/node/1015226">release naming conventions</a> and <a href="http://drupal.org/node/1066342">creating a branch in git</a>. <code><dl><dt>Master Branch</dt><dd>It appears you are working in the "master" branch in git. You should really be working in a version specific branch. The most direct documentation on this is <a href="http://drupal.org/node/1127732">Moving from a master branch to a version branch.</a> For additional resources please see the documentation about <a href="http://drupal.org/node/1015226">release naming conventions</a> and <a href="http://drupal.org/node/1066342">creating a branch in git</a>.</dd></dl></code></dd>',
+    );
+    $report = tinyids_scan($haystack, array('Test'));
+    if (count($report) !== count($haystack)) {
+      $this->fail('False positive detection (Harmless HTML).');
+    }
+    foreach ($report as $intrusion) {
+      $this->assertTrue($intrusion['impact'] < 10, 'False positive detection (Harmless HTML).');
+    }
+  }
+
+  /**
+   * Unit test against XSS/CSRF probing detection.
+   */
+  public function testTinyidsXss() {
+    // Basic XSS probing.
+    $haystack = array(
+      '\'\';!--"<>=&{()}',
+      '\'">',
+      '"><"',
+    );
+    $report = tinyids_scan($haystack, array('Test'));
+    if (count($report) !== count($haystack)) {
+      $this->fail('Basic XSS probing detection.');
+    }
+    foreach ($report as $intrusion) {
+      $this->assertTrue($intrusion['impact'] < 10 && $intrusion['impact'] > 0, 'Basic XSS probing detection.');
+    }
+
+    // Obvious XSS probing.
+    $haystack = array(
+      '"><script>alert(\'XSS\')</script>',
+      '<img src="javascript:alert(\'XSS\');">',
+      '<script/src="http://ha.ckers.org/xss.js"></script>',
+      "<script>a=/XSS/\nalert(a.source)</script>",
+      '<meta HTTP-EQUIV="refresh" CONTENT="0;url=javascript:alert(\'XSS\');">',
+      '<iframe src="javascript:alert(\'XSS\');"></IFRAME>',
+    );
+    $report = tinyids_scan($haystack, array('Test'));
+    if (count($report) !== count($haystack)) {
+      $this->fail('Obvious XSS probing detection.');
+    }
+    foreach ($report as $intrusion) {
+      $this->assertTrue($intrusion['impact'] >= 10 && $intrusion['impact'] < 20, 'Obvious XSS probing detection.');
+    }
+
+    // Obfuscated XSS probing.
+    $haystack = array(
+      '"><sCrIpt>alert(\'.\')</sCrIpT>',
+      '<<script>alert("XSS");//<</script>',
+      '<script\n/src="h\nt\nt\np:\n/\n/\nh\na\n.\nc\nkers.org/xss.js\n">\n</script\n>',
+    );
+    $report = tinyids_scan($haystack, array('Test'));
+    if (count($report) !== count($haystack)) {
+      $this->fail('Obfuscated XSS probing detection.');
+    }
+    foreach($report as $intrusion) {
+      $this->assertTrue($intrusion['impact'] >= 10 && $intrusion['impact'] < 20, 'Obfuscated XSS probing detection.');
+    }
+  }
+
+  /**
+   * Unit test against SQLi probing detection.
+   */
+  public function testTinyidsSqli() {
+    // Basic SQLi probing.
+    $haystack = array(
+      "'",
+      "admin'--",
+      "') or '1'='1--",
+    );
+    $report = tinyids_scan($haystack, array('Test'));
+    if (count($report) !== count($haystack)) {
+      $this->fail('Basic SQLi probing detection.');
+    }
+    foreach ($report as $intrusion) {
+      $this->assertTrue($intrusion['impact'] < 10 && $intrusion['impact'] > 0, 'Basic SQLi probing detection.');
+    }
+
+    // Typical SQLi.
+    $haystack = array(
+      "0 union select 1,2--",
+      "0 UNION SELECT CONCAT(nickname, 0x2C, email, 0x2C, passwort)",
+      "SELECT LOAD_FILE(0x633A5C626F6F742E696E69)",
+    );
+    $report = tinyids_scan($haystack, array('Test'));
+    if (count($report) !== count($haystack)) {
+      $this->fail('Typical SQLi detection.');
+    }
+    foreach ($report as $intrusion) {
+      $this->assertTrue($intrusion['impact'] >= 5 && $intrusion['impact'] < 20, 'Typical SQLi detection.');
+    }
+  }
+
+  /**
+   * Unit test against RCE probing detection.
+   */
+  public function testTinyidsRce() {
+    // @TODO.
+  }
+}

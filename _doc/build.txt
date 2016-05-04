@@ -1,0 +1,40 @@
+Information build to Acquia:
+
+Acquia admin:
+https://insight.acquia.com/
+doug@cibostudios.com
+GoCiboGo2013!
+
+https://insight.acquia.com/cloud/workflow?s=1005041
+
+
+HTTP Authencation
+shield_user: boxsecure
+shield_pass: stage@acquia2013!
+
+ssh box@staging-5552.prod.hosting.acquia.com
+
+
+Database:
+Server staging-5552.prod.hosting.acquia.com
+Database name boxdev
+Username boxdev
+Password eE8gDn8RiiZeRG8
+
+
+Access the  code in the ~/dev/livedev when the mode "live developement" is activated
+no activated mode live development source code: /var/www/html/boxdev
+
+
+After build, clear cache command lines:
+rm -Rf ~/dev/livedev/docroot/sites/default/files/css/*
+rm -Rf ~/dev/livedev/docroot/sites/default/files/js/*
+rm -Rf ~/dev/livedev/docroot/sites/default/files/styles/*
+rm -Rf ~/dev/livedev/docroot/sites/default/files/imagecache/*
+rm -Rf ~/dev/livedev/docroot/sites/default/files/languages/*
+
+sites/default/files/tmp
+
+cp -Rf ~/dev/livedev/docroot/sites/default/files/* /mnt/files/boxdev/sites/default/files
+cp -Rf ~/dev/livedev/docroot/sites/default/files/* /var/www/html/boxdev/docroot/sites/default/files/
+cp -Rf files/* /var/www/html/boxdev/docroot/sites/default/files/

@@ -1,0 +1,16 @@
+name = Tiny-IDS
+description = "A tiny intrusion detection system."
+package = Security
+core = 7.x
+
+dependencies[] = dblog
+files[] = tinyids.test
+
+configure = admin/config/system/tinyids
+
+; Information added by drupal.org packaging script on 2012-07-19
+version = "7.x-1.0-alpha2"
+core = "7.x"
+project = "tinyids"
+datestamp = "1342710718"
+

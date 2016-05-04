@@ -1,0 +1,10 @@
+; $Id$
+name = Field Collection TMGMT
+description = "Module provide a export field collection for translation managerment"
+dependencies[] = tmgmt
+dependencies[] = field_collection
+package = Utilities
+core = 7.x
+
+version = "7.x-1.0"
+core = "7.x"

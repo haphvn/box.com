@@ -1,0 +1,23 @@
+{
+  "members" : [
+    {
+    "itemid"    :"0",
+    "avatar"    : "../img/u18-investors-ex.jpg",
+    "title"     : "Andreessen Horowitz",
+    "content"   : "<p>Andreessen Horowitz is a venture capital firm that invests in high technology companies and is based on a vision for a new, modern venture capital firm that supports entrepreneurs through angel investments to large scale funding. Its general partners are Marc Andreessen, Ben Horowitz and John O'Farrell, all widely recognized experts in the creation, scaling, and operation of high growth technology companies such as Netscape, Opsware, Silver Spring Networks, and Excite@Home. Andreessen Horowitz has more than 30 investments with companies like Facebook, Foursquare, Groupon, Kno, Rockmelt, Skype, Twitter, and Zynga. The firm was established in June 2009 and is located in Menlo Park, CA.</p>"
+    },
+    {
+    "itemid"    :"1",
+    "avatar"    : "../img/u18-investors-ex.jpg",
+    "title"     : "Bessemer Venture Partners",
+    "content"   : "<p>Bessemer Venture Partners is a global venture capital firm with offices in Silicon Valley, Cambridge, Mass., New York, Mumbai and Herzliya, Israel. One of the longest standing venture capital practices in the United States, BVP has partnered as an active, hands-on investor in Ciena, LinkedIn, Celtel, Blue Nile, Skype, Staples and Yelp. More than 100 BVP-funded companies have gone public on exchanges in Canada, India, the U.K. and the United States. Bessemer has been a leader in Cloud Computing for more than a decade, investing in early pioneers in this high-growth market segment such as Postini, Trigo, Cyota, and Verisign. BVP's current SaaS portfolio has almost three dozen companies including Adap.tv, Broadsoft, Cornerstone OnDemand, Eloqua, LinkedIn, Shopify, Twilio, and Wix.</p>"
+    },
+    {
+    "itemid"    :"2",
+    "avatar"    : "../img/u18-investors-ex.jpg",
+    "title"     : "Draper Fisher Jurvetson",
+    "content"   : "<p>Since its founding in 1985, Draper Fisher Jurvetson has been proud to back more than 500 companies across many sectors including industry-changing successes such as Hotmail (acquired by MSFT), Baidu (BIDU), Skype (acquired by EBAY), Overture (acquired by YHOO) and Feedburner (acquired by GOOG).</p>"
+    }    
+  ]
+
+}

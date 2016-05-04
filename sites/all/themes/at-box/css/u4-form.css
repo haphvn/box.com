@@ -1,0 +1,43 @@
+.form-lead-wrapper {width: 860px; overflow: hidden; }
+.form-lead-inner-wrapper { width: 807px; overflow: hidden; padding: 0px 29px 0px 27px;}
+.form-title {}
+.form-title .title { font-size: 38px; color: #747679; font-family: 'proximanova-light'; margin: 0; line-height: 36px;}
+.form-title .text-normal,.row-bottom .text-normal { font: 15px/18px 'proximanova-light'; color: #999;}
+.form-title .text-bold { font: 22px/20px 'proximanova-regular'; color: #747679; padding: 7px 0 10px}
+#form-lead-content { overflow: hidden;}
+.row-item { margin-bottom: 20px; overflow: hidden;}
+.form-lead-inner-coll, .form-lead-inner-colr { padding-top: 60px}
+.form-lead-inner-colr { background: url(../img/u4-bg-center.png) left top no-repeat;}
+
+.form-lead-inner-coll { width: 373px; float: left; padding-right: 29px;}
+.form-lead-inner-colr { width: 373px; float: left; padding-left: 30px;}
+.row-item label { font: 15px/18px 'proximanova-regular'; color: #747679; display: block; padding-bottom: 10px;}
+.row-item .inputpstyle { width: 351px;}
+.row-item .txtareastyle { width: 351px; height: 105px;}
+.row-bottom { clear: both; }
+.row-bottom .row-item  { /*padding-top: 40px;*/ }
+.button-blue button { background: none;}
+.row-bottom .text-normal { padding-top: 24px;}
+.cboxIframe #header, .cboxIframe #block-get-apps{ display: none;}
+#popup { height: 749px;}
+.cboxIframe { overflow: hidden;}
+#cboxLoadedContent {
+    margin-bottom: 0px;
+}
+@media screen and (max-width: 719px) {
+  .form-lead-wrapper { width: 100%; overflow: hidden; border: 1px solid #f00; background: red;}
+}
+@media screen and (min-width: 720px) and (max-width: 977px) {
+.form-lead-wrapper { width: 100%; overflow: hidden; border: 1px solid #f00; background: green;}
+.form-lead-inner-wrapper { overflow: hidden; }
+  /*.form-lead-inner-wrapper { width: 805px; overflow: hidden; padding: 65px 20px 60px;}
+  .form-lead-inner-coll { width: 92.786%; float: left; padding-right: 7.214%}
+  .form-lead-inner-colr { width: 92.556%; float: left; padding-right: 7.444%}*/
+  
+}
+
+@media screen and ( min-width: 978px ) {
+  .form-lead-wrapper { width: 860px; overflow: hidden; }
+}
+
+html,body{overflow-x:hidden;overflow-y:auto;}

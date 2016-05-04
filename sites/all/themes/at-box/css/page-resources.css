@@ -1,0 +1,162 @@
+.fpo-sub-nav { display: none;}
+.shadow-top { padding-top: 55px;}
+.block-calculator { padding: 0 0 46px 54px; overflow: hidden;}
+.tco-calculator { width: 449px; float: left; overflow: hidden; padding-bottom: 13px}
+
+.tco-calculator h2 { font-size: 22px; font-family: proximanova-semibold; margin: 0; color: #747679;}
+.tco-calculator p { font: 15px/18px proximanova-regular; color: #999999;  margin: 29px 35px 20px 0;}
+.block-email input.inputpstyle { width: 253px; font-size: 14px}
+.block-email .outerinput {float: left; margin-right: 22px;}
+.block-email .button-blue { float: left; width: auto;}
+.i18n-de .block-email input.inputpstyle,
+.i18n-fr .block-email input.inputpstyle { 
+  width: 226px; font-size: 14px
+}
+
+.block-photo { float: right; width: 470px; padding-top: 6px;}
+.block-photo img { float: right;}
+.img-720 { display: none;}
+/* analyst research*/
+.line-header { overflow: hidden; margin-left: 30px;}
+.analyst-research .title-header { float: left; color: #747679; font: 22px/22px proximanova-semibold; margin-top: 2px; padding-bottom: 10px;}
+.view-all { float: right; color: #004B85; font: 15px/15px proximanova-regular; padding-top: 7px; }
+.analyst-research { padding: 0 54px 0 24px; width: 900px;}
+
+
+.analyst-research .list-parent {
+    margin: 0 0 25px;
+    padding: 0;
+    font-size: 0;
+  }
+
+  .list-parent li {
+    display: inline-block;
+    vertical-align: top;
+    width: 420px;
+    color: #999999;
+    margin-bottom: 31px;
+    margin-left: 30px;
+  }
+  .list-parent .list-ico {
+    display: block;
+    width: 64px;
+    height: 64px;
+    overflow: hidden;
+    float: left;
+    margin-right: 22px;
+    margin-top: 4px;
+    margin-bottom: 5px; 
+  }
+
+  .list-parent .list-content {
+    overflow: hidden;
+    font-size: 15px;
+    line-height: 18px;  
+    width: 262px; 
+  }
+  .list-parent .title {
+    color: #004B85;
+  }
+  .list-parent .title sup {
+    font-size: 20px;
+    top: 2px;
+  }
+  .lt-ie9 .list-parent .title sup {
+    top: 1px;
+  }
+  .list-content p { color: #999; padding-top: 4px;}
+
+  .list-parent.navy .title {
+    font-size: 15px;
+    line-height: 18px;    
+    margin-left: 0px;
+  }
+
+  .list-child {
+    margin: 0;
+    padding: 0;
+  }
+  .odd .list-child {
+    padding-right: 54px;
+  }
+  .list-child li {
+    font-size: 15px;
+    line-height: 18px;    
+    width: auto;
+    margin-left: 0px;
+    margin-top: 16px;
+    margin-bottom: 0px;
+    padding-left: 8px;
+  }
+  .navy .list-child li {
+    padding-left: 12px;
+  }
+  .list-child li:before {
+    font-size: 40px;
+    line-height: 0;
+    width: 8px;
+    height: 100%;
+    left: -2px;
+    top: -1px;
+  }
+  .list-parent .last-child {
+    margin-bottom: 0;
+  }
+  .bg-white { padding-top: 0;}
+  .white-papers .list-parent{ margin-bottom: 24px;}
+@media screen and (max-width: 320px) {
+  .lt-ie9 .outerinput { width: 100%;}
+}
+@media screen and (max-width: 719px) {
+  .list-parent li.mobile-hide { display: none;}
+  .list-parent .list-ico { margin-top: 3px;}
+  .list-parent .title sup { font-size: 19px;}
+  .shadow-top { padding-top: 37px;}
+  .img-destop { display: none;}
+  .block-calculator { padding-left: 9.375%; width: 90.625%; padding-bottom: 40px;}
+  .tco-calculator { width: 90%;}
+  .block-photo { display: none;}
+  .tco-calculator p { margin: 13px 0 20px;}
+  .block-email input.inputpstyle { font-size: 12px; width: 85%;}
+  .title-header { margin-bottom: 6px;}
+  .line-header, .list-parent li { margin-left: 0;} 
+  .analyst-research { padding: 0 9.375%; width: 81.25%;}
+  .list-parent .list-ico { margin-right: 20px;}
+  .list-parent .list-content { width: 45%;}
+  .white-papers .list-parent { margin-bottom: 20px; }
+  .block-email .outerinput { margin-bottom: 22px;}
+  .list-parent li { margin-bottom: 16px;}
+  .analyst-research .title-header {
+    font-size: 18px; line-height: 20px;
+  }
+
+  .block-email input.inputpstyle { width: 230px;}
+  .lt-ie9 .outerinput { width: auto; overflow: hidden;}
+  .analyst-research .title-header {font-size: 18px;
+    line-height: 18px;
+    margin-top: 0;
+  }
+  .view-all { padding-top: 3px;}
+  .line-header { margin-bottom: 1px;}
+  .list-parent .list-ico { margin-top: 4px; margin-bottom: 4px;}
+}
+
+@media screen and (min-width: 720px) and (max-width: 977px) {
+  #banner .main-banner-content .banner-des p { width: 305px;}
+  .block-calculator { padding-left: 5.55%; width: 94.45%; padding-bottom: 21px;}
+  .tco-calculator { width: 57%; padding-right: 0; padding-bottom: 30px;}
+  .tco-calculator p { margin-top: 30px; margin-bottom: 19px;}
+  .block-calculator { padding-bottom: 30px;}
+  .block-photo { width: 40%; margin-top: 77px;}
+  .img-720 { display: block;}
+  .img-destop { display: none;}
+  .block-email .outerinput {  margin-bottom: 22px;}
+  .analyst-research { padding: 1px 5.55% 0 1.343%; width: 93.107%}
+  .list-parent li { margin-left: 4.947%; width: 45.053%;}
+  .list-parent .list-content { width: 70%}
+  .line-header { margin-left: 4.974%;}
+}
+
+@media screen and (min-width: 978px){
+
+}

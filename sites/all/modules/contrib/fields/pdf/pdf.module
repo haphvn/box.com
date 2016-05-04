@@ -1,0 +1,24 @@
+<?php
+module_load_include('inc', 'pdf', '/includes/pdf.field');
+
+function pdf_theme() {
+  $theme = array(
+    'pdf_formatter_default' => array(
+      'variables' => array(
+        'file' => NULL, 
+        'keep_pdfjs' => NULL,
+      ),
+      'file' => 'includes/pdf.field.inc',
+    ),
+    'pdf_formatter_thumbnail' => array(
+      'variables' => array('file' => NULL),
+      'file' => 'includes/pdf.field.inc',
+    ),
+    'pdf_formatter_pages' => array(
+      'variables' => array('file' => NULL),
+      'file' => 'includes/pdf.field.inc',
+    ),
+  );
+  return $theme;
+}
+

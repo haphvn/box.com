@@ -1,0 +1,20 @@
+name = Entity Source User Interface
+description = User Interface for the entity translation source plugin.
+package = Translation Management
+core = 7.x
+
+dependencies[] = tmgmt_entity
+dependencies[] = tmgmt_ui
+dependencies[] = views_bulk_operations
+dependencies[] = entity_translation
+
+files[] = tmgmt_entity_ui.test
+files[] = tmgmt_entity_ui.ui.inc
+
+
+; Information added by drupal.org packaging script on 2013-04-23
+version = "7.x-1.0-alpha3"
+core = "7.x"
+project = "tmgmt"
+datestamp = "1366748712"
+

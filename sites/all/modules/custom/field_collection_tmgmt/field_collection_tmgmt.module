@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * Implements hook_tmgmt_source_translation_structure().
+ * This hook is implemented on behalf of the core text module.
+
+ function field_collection_tmgmt_source_translation_structure($entity_type, $entity, $field,
+  $instance, $langcode, $items)
+{
+
+  $sub_fields_info = field_info_instances('field_collection_item', $field['field_name']);
+	//$field_entity = field_collection_item_load($field->id); // -- this doesnt work yet ;)
+	$wrapper = entity_metadata_wrapper($entity_type, $entity);
+
+	print_r($wrapper->{$field['field_name']}->value());die;
+
+
+
+  $fields = array();
+  foreach ($sub_fields_info as $sub_field_name => $sub_field_instance) {
+    watchdog('test', 'step Victor'); // Script cannot continue from here?!
+    $sub_field = field_info_field($sub_field_name);
+
+    $sub_items = field_get_items('field_collection', $field_entity, $sub_field_name, $langcode);
+		print_r($sub_items);die;
+    if ($sub_items) {
+      watchdog('test', 'step Vinh');
+      if ($data = module_invoke(
+        $sub_field['module'],
+        'tmgmt_source_translation_structure',
+        'field_collection_item',
+        $field,
+        $sub_field,
+        $sub_field_instance,
+        $langcode,
+        $sub_items)) {
+        watchdog('test', 'step Khoa');
+        $fields[$sub_field_name] = $data;
+      }
+    }
+  }
+  return $fields;
+}
+/**
+ * 
+ * @param unknown $entity_type
+ * @param unknown $entity
+ * @param unknown $langcode
+ * @param string $only_translatable
+
+ function field_collection_tmgmt_field_get_source_data($entity_type, $entity, $langcode,
+  $only_translatable = FALSE)
+{
+
+}
+ */

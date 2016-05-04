@@ -1,0 +1,9 @@
+/* fix css3 */
+.box-item.bg-white {
+    behavior: url('../js/pie/PIE.htc');
+} 
+
+/*.test {
+	position: relative;
+   -webkit-box-sizing: border-box;
+}*/

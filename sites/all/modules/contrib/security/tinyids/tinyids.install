@@ -1,0 +1,27 @@
+<?php
+/**
+ * @file
+ * This file is used for module installation / enable / disable tasks.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function tinyids_uninstall() {
+  // Delete used variables.
+  variable_del('tinyids_sensibility');
+  variable_del('tinyids_xss');
+  variable_del('tinyids_sqli');
+  variable_del('tinyids_rce');
+  variable_del('tinyids_global_get');
+  variable_del('tinyids_global_post');
+  variable_del('tinyids_global_cookie');
+  variable_del('tinyids_global_server');
+  variable_del('tinyids_global_nesting');
+  variable_del('tinyids_warning');
+  variable_del('tinyids_warning_message');
+  variable_del('tinyids_mailing');
+  variable_del('tinyids_mailing_address');
+  variable_del('tinyids_mailing_htmlmail');
+  variable_del('tinyids_debug');
+}

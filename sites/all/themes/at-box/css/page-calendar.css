@@ -1,0 +1,722 @@
+/*** Public style ***/
+.main-banner-content {
+  position: relative;
+  width: 100%;
+}
+.main-banner-content .banner-shadow{  
+  position: absolute; top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 15px;
+  background: url(../img/shadow-box.png) left -1px repeat-x;
+}
+.main-banner-content .banner-img{
+  overflow: hidden;
+}
+.main-banner-content .banner-des{
+  position: absolute;
+  z-index: 2;
+  font-family: 'proximanova-light';
+}
+
+.main-banner-content .banner-des a{
+    color: #00AEF0;
+    font-family: 'proximanova-regular';
+}
+
+
+.fpo-sub-nav {
+  display: block;
+  background-color: #999;
+  height: 54px;
+}
+
+.bg-white,
+.content.bg-white {
+  padding-top: 0;
+}
+
+.title:hover,
+.title:active {
+  text-decoration: none;
+}
+
+.col-two{
+  position: relative;
+  float: left;
+  font-size: 0px;
+}
+
+.title-header {
+  clear: both;
+  width: 100%;
+}
+.title-header h2 {
+  color: #747679;
+  font-family: 'proximanova-light';
+  font-weight: normal;
+}
+.col-content p {
+  clear: both;
+  padding: 0;
+  width: 100%;
+  color: #747679;
+  font-family: 'proximanova-light';
+}
+
+.col-content .strong,
+.list-infor .strong {
+  font-family: 'proximanova-semibold';
+}
+.col-content p a,
+.col-content p a:active {
+  color: #004b85;
+}
+
+.list-infor p{
+  clear: both;
+  padding: 0;
+  width: 100%;
+  color: #999999;
+  font-family: 'proximanova-light';
+}
+
+.list-infor a{
+  color: #004b85;
+}
+
+.bg-white,
+.content.bg-white {
+  padding-top: 0;
+}
+
+
+.slider-ul li {
+  text-align: left;
+  /* gradient background */
+  background: #f7f5f5; /* Old browsers */
+  background: -moz-linear-gradient(bottom,  #f7f5f5 0%, #f9fbfb 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0%,#f7f5f5), color-stop(100%,#f9fbfb));/* Chrome,Safari4+*/
+  background: -webkit-linear-gradient(bottom,  #f7f5f5 0%,#f9fbfb 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(bottom,  #f7f5f5 0%,#f9fbfb 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(bottom,  #f7f5f5 0%,#f9fbfb 100%); /*IE10+*/
+  background: linear-gradient(to top,  #f7f5f5 0%,#f9fbfb 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f5f5', endColorstr='#f9fbfb',GradientType=0 ); /* IE6-9 */
+  /* box shadow */
+  -webkit-box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+  box-shadow: 0px 1px 2px rgba(0,0,0,0.2); /**different for IE9+10 **/
+  line-height: 100%;
+}
+
+
+  .lt-ie9 .slider-ul li {
+    padding: 36px 0px 35px 0px;
+    position: relative;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=120, Color='#d9d9d9')" ;
+  }
+  .lt-ie9 .slider-ul li:before {
+    background: url('../img/box-bg-ie.jpg') repeat-x left bottom #f9fbfb;
+    content: '';
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+
+.bx-wrapper .bx-controls-direction a {
+    height: 46px;
+    margin-top: -23px;
+    outline: 0 none;
+    position: absolute;
+    text-indent: -9999px;
+    top: 50%;
+    width: 50px;
+    z-index: 1000;
+}  
+
+.event-wrapper a,
+.event-wrapper a:hover,
+.event-wrapper a:active {
+  text-decoration: none;
+}
+.event-type {
+  color: #00AEF0;
+  font-family: 'proximanova-light';
+  display: block;
+}
+
+.event-title {
+  color: #747679;
+  font-family: 'proximanova-semibold';
+  display: block;
+}
+
+.event-time {
+  color: #999999;
+  font-family: 'proximanova-light';
+  display: block;
+}
+
+.add-calendar {
+  background: url(../img/ico-calendar.png) no-repeat -10px -12px transparent;
+  padding-left: 30px;
+  font-family: 'proximanova-light';
+  font-size: 15px;
+  line-height: 18px;
+  color: #004b85;
+}
+.add-attend {
+  background: url(../img/ico-calendar.png) no-repeat -10px -51px transparent;
+  padding-left: 30px;
+  font-family: 'proximanova-light';
+  font-size: 15px;
+  line-height: 18px;
+  color: #004b85;
+  display: block;  
+}
+.add-calendar:hover,
+.add-attend:hover {
+  text-decoration: none;
+}
+.event-wrapper .description .desc-content{
+  display: none;
+  font-family: 'proximanova-light';
+  font-size: 15px;
+  line-height: 18px;
+  color: #999999;
+  padding: 13px 30px 16px 0px;
+}
+.event-wrapper .expand .desc-content{
+  display: block;
+}
+.desc-content p {
+  margin-bottom: 16px;
+}
+.desc-content a {
+  color: #004b85;
+}
+.desc-view {
+  display: inline-block;
+  position: relative;
+  font-size: 15px;
+  line-height: 18px;
+  color: #004b85;
+}
+.desc-view:before{
+  background: url(../img/ico-calendar.png) no-repeat -16px -198px transparent;
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  right: -18px;
+  top: 50%;
+  margin-top: -5px;
+  position: absolute;
+}
+.expand .desc-view:before{
+  background: url(../img/ico-calendar.png) no-repeat -16px -211px transparent;
+}
+
+.slide-event {
+  position: relative;
+}
+
+.bx-wrapper {
+  margin: auto;
+}
+.bx-viewport {
+  padding-bottom: 2px;
+  padding-right: 2px;
+  margin: auto;
+}
+
+#banner .bx-viewport {
+  padding-bottom: 0px;
+  padding-right: 0px;
+}
+
+.bx-wrapper .bx-controls-direction a {  
+  width: 30px;
+  height: 44px;
+}
+
+.bx-wrapper .bx-prev{
+  background-position: -6px -129px;
+}
+.bx-wrapper .bx-next{
+  background-position: -6px -189px;
+}
+
+/*** Mobile style ***/
+@media screen and (max-width: 719px) {
+
+  .main-banner-content .banner-img{
+    height: 200px;
+  }
+  .main-banner-content img.mobile {
+    width: 100%;
+    max-width: none;
+    display: block;
+  }
+  .main-banner-content .banner-des{
+    top: 31px;
+    left: 9.375%;
+    width: 250px;
+  }
+
+  .main-banner-content .banner-des p{ 
+    display: none;
+  }
+  .main-banner-content .banner-des a{ 
+    display: block;
+    margin-top: 3px;
+  }
+  .padding-bottom-60{
+    padding-bottom: 36px;
+  }  
+  .shadow-top {
+      padding-top: 36px;
+  }
+
+  .fpo-sub-nav {
+    display: none;
+  }
+
+  .col-content { display: block;}
+  .col-two {
+    float: none;
+    padding: 0px;
+  }
+  .col-two img {
+    float: none;
+    margin-top: 18px;
+    padding-bottom: 4px;
+  }  
+
+  .col-left{
+    width: auto;
+    padding: 0px 9.375%;
+  }
+  .col-right{
+    width: auto;
+    padding: 0px 9.375%;
+  }
+  .title-header {
+    margin: 0 9.375%;
+  }
+  .title-header h2 {
+    margin: 0 0 0 -2px;
+    padding: 0;
+    font-size: 30px;
+    line-height: 30px;
+  }
+
+  .col-content p {
+    line-height: 20px;
+    font-size: 18px;  
+    margin: 16px 0px 0px 0px;
+  }
+  .col-two .list-infor {
+    padding-top: 4px;
+  }
+  .list-infor p{
+    font-size: 15px;
+    line-height: 18px;
+    margin: 16px 0px 0px 0px;
+  }
+
+  .btnSignup {
+    display: inline-block;
+    margin-top: 20px;
+    width: auto;
+    padding: 0 24px;
+  }
+
+  .list-infor .add-calendar {
+    margin-top: 16px;
+    display: block;
+  }
+
+  .slide-event {
+    padding-bottom: 40px;
+  }
+  .slider-ul {
+    margin: 0 9.375%;
+    height: auto;
+  }
+  .slider-ul li {
+    float: none;
+    margin: 24px 0px 0px 0px;
+    padding: 16px 20px 15px 19px;
+    width: auto !important;
+  }
+  .slider-ul li:first-child {
+    margin-top: 20px;
+  }
+
+  .lt-ie9 .slider-ul li {
+    padding: 16px 20px 15px 19px;
+  }
+  .slider-ul .event-wrapper {
+    margin: 0px;
+  }
+  .event-type {
+    font-size: 15px;
+    line-height: 18px;
+    margin-bottom: 16px;
+  }
+
+  .event-title {
+    font-size: 18px;
+    line-height: 20px;
+    margin-bottom: 4px;
+  }
+
+  .event-time {
+    font-size: 15px;
+    line-height: 18px;
+  }
+
+  .event-time + .add-calendar {
+    margin-top: 20px;
+  }
+
+  .event-wrapper .add-calendar {
+    margin-top: 18px;
+  }
+
+  .add-calendar {
+    display: block;
+    margin-bottom: 9px;
+  }
+  .add-attend {
+    margin-bottom: 19px;
+  }
+
+}
+
+
+
+/*** Tablet style ***/
+@media screen and (min-width: 720px) and (max-width: 977px) {
+  .main-banner-content .banner-img{
+
+  }
+  .main-banner-content .banner-des{
+    top: 60px;
+    left: 5.55%;
+    width: 430px;
+  }
+  .main-banner-content .banner-des p {
+    color: #FFFFFF;
+    font-size: 18px;
+    line-height: 20px;
+    margin-bottom: 16px;
+  }
+  .main-banner-content .banner-des a {
+    font-size: 18px;
+    line-height: 20px;
+  }
+  .shadow-top {
+      padding-top: 56px;
+  }
+  .padding-bottom-60{
+    padding-bottom: 56px;
+  }  
+
+  .col-two img{
+    float: left;
+    max-width: none;
+    width: 100%;
+    height: auto;
+    margin-top: 18px;
+    margin-bottom: 5px;
+  }
+
+  .col-left{
+    padding-left: 5.55%;
+    width: 40.27%;
+  }
+
+  .col-right{
+    padding-right: 5.55%;
+    width: 44.44%;
+    float: right;
+  }
+
+  .title-header {
+    margin: 0 5.5%;
+    padding-bottom: 15px;
+  }
+  .title-header h2 {
+    margin: 0 0 0 -2px;
+    padding: 0;
+    font-size: 38px;
+    line-height: 38px;
+  }
+
+  .col-content p {
+    line-height: 26px;
+    font-size: 22px;  
+    margin: 13px 0px 0px 0px;
+  }
+  .col-two .list-infor {
+    padding-top: 4px;
+  }
+  .list-infor p{
+    font-size: 15px;
+    line-height: 18px;
+    margin: 16px 0px 0px 0px;
+  }
+
+  .btnSignup {
+    display: block;
+    margin-top: 17px;
+    width: 168px;
+  }
+
+  .list-infor .add-calendar {
+    margin-top: 16px;
+    display: block;
+  }
+
+  .event-wrapper .add-calendar {
+    display: block;
+    margin-bottom: 9px;
+    margin-top: 18px;
+  }
+  .event-wrapper .add-attend {
+    margin-bottom: 19px;
+  }
+
+  .slide-event {
+    padding-bottom: 58px;
+    padding-top: 18px;
+    margin: 0 8.61%;
+  }
+  .slider-ul {
+    margin: 0 auto;
+    height: auto;
+    font-size: 0px;
+  }
+  .slider-ul li {
+    float: left;
+    display: block;
+    vertical-align: top;
+    margin: 0px 0px 0px 5.033%;
+    padding: 36px 0px 35px 0px;
+    width: 47.43%;
+  }
+
+  .slider-ul li:first-child,
+  .bx-wrapper .slider-ul li{
+    margin-left: 0px;
+  }
+  .slider-ul .event-wrapper {
+    margin: 0px;
+    padding-left: 39px;
+    width: 243px;
+  }
+  .event-type {
+    font-size: 15px;
+    line-height: 18px;
+    margin-bottom: 16px;
+  }
+
+  .event-title {
+    font-size: 22px;
+    line-height: 26px;
+    margin-bottom: 4px;
+  }
+
+  .event-time {
+    font-size: 15px;
+    line-height: 18px;
+  }
+
+  .event-time + .add-calendar {
+    margin-top: 20px;
+  }
+
+  .bx-wrapper .bx-controls-direction a {  
+    margin-top: -51px;
+  }
+
+  .bx-wrapper .bx-prev{
+    left: -42px;
+  }
+  .bx-wrapper .bx-next{
+    right: -42px;
+  }
+
+}
+
+
+/*** Desktop style ***/
+@media screen and (min-width: 978px) {
+
+  .main-banner-content .banner-img{
+    height: 385px;
+  }
+  .main-banner-content .banner-img img {
+    max-width: none;
+  }
+  .main-banner-content .banner-des{
+    top: 60px;
+    left: 5.52%;
+    width: 450px;
+  }
+  .main-banner-content .banner-des p{
+    color: #FFFFFF;
+    font-family: 'proximanova-regular';
+    font-size: 18px;
+    line-height: 20px;
+    margin-bottom: 16px;
+  }
+  .main-banner-content .banner-des a{
+      font-size: 18px;
+      line-height: 20px;
+  }
+  .shadow-top {
+    padding-top: 56px;
+  }
+  .padding-bottom-60{
+    padding-bottom: 55px;
+  } 
+  .col-two img{
+    float: left;
+    max-width: none;
+    width: 100%;
+    height: auto;
+    margin-top: 17px;
+    margin-bottom: 5px;
+  }
+
+  .col-left{
+    margin-left: 5.52%;
+    width: 42.94%;
+  }
+
+  .col-right{
+    margin-right: 5.52%;
+    width: 42.94%;
+    float: right;
+  }
+
+  .title-header {
+    padding-bottom: 35px;
+    margin-left: 5.52%;
+  }
+
+  .title-header h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 38px;
+    line-height: 38px;
+  }
+
+  .col-content p {
+    line-height: 26px;
+    font-size: 22px;  
+    margin: 13px 0px 0px 0px;
+    padding-right: 40px;
+  }
+
+  .list-infor {
+    padding-top: 5px;
+  }
+  .list-infor p{
+    font-size: 15px;
+    line-height: 18px;
+    margin: 16px 0px 0px 0px;    
+  }
+
+
+  .btnSignup, .btnBlue {
+    margin-top: 17px;
+    display: inline-block;
+  }
+
+  .list-infor .add-calendar {
+    margin-top: 16px;
+    display: block;
+  }
+
+  .slide-event {
+    padding-bottom: 60px;
+    padding-top: 18px;
+    margin: 0 5.52%;
+  }
+  .slider-ul {
+    margin: 0;
+    height: auto;
+    font-size: 0px;
+  }
+  .slider-ul li {
+    float: left;
+    display: block;
+    margin: 0px 0px 0px 12px;
+    padding: 36px 0px 35px 0px;
+    width: 32.29% !important;
+  }
+
+  .bx-viewport .slider-ul li {
+    width: auto !important;
+    margin-left: 0px;
+  }
+
+  .slider-ul li:first-child{
+    margin-left: 0px;
+  }
+  .slider-ul .event-wrapper {
+    margin: 0px;
+    padding-left: 39px;
+    width: 243px;
+  }
+  .event-type {
+    display: block;
+    font-size: 15px;
+    line-height: 18px;
+    margin-bottom: 16px;
+  }
+
+  .event-title {
+    font-size: 22px;
+    line-height: 26px;
+    margin-bottom: 4px;
+  }
+
+  .event-time {
+    font-size: 15px;
+    line-height: 18px;
+    margin-bottom: 20px;
+  }
+
+  .event-time + .add-calendar {
+    margin-top: 20px;
+  }
+
+  .event-wrapper .add-calendar {
+    display: block;
+    margin-bottom: 9px;
+    margin-top: 18px;    
+  }
+  .event-wrapper .add-attend {
+    margin-bottom: 19px;
+  }
+  .bx-wrapper .bx-controls-direction a {  
+    margin-top: -44px;
+  }
+
+  .bx-wrapper .bx-prev{
+    left: -42px;
+  }
+  .bx-wrapper .bx-next{
+    right: -42px;
+  }
+
+}

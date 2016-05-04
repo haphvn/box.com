@@ -1,0 +1,32 @@
+/**
+ * @file
+ * RTL base styling for responsive preview.
+ */
+
+/**
+ * Toolbar tab.
+ */
+
+/* At narrow screen widths, float the tab to the right so it falls in line with
+ * the rest of the navbar tabs. */
+.js .navbar .bar .navbar-tab-responsive-preview.tab {
+  float: left;
+}
+.navbar-tab-responsive-preview .responsive-preview-options {
+  left: 0.3em;
+  right: auto;
+}
+
+/**
+ * Preview container.
+ *
+ * The container is kept offscreen after it is built and has been disabled.
+ */
+.responsive-preview {
+  left: auto;
+  right: -200%;
+}
+.responsive-preview.active {
+  left: auto;
+  right: 0;
+}

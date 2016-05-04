@@ -1,0 +1,124 @@
+<?php
+/**
+ * @reviewed_by thang.pham
+ * @reviewed_date 2013-07-09
+ */
+/**
+ * Implements hook_init()
+ */
+function be_init()
+{
+  module_load_include('inc', 'be', 'includes/content');
+  module_load_include('inc', 'be', 'includes/model');
+  module_load_include('inc', 'be', 'includes/utility');
+  module_load_include('inc', 'be', 'be.form');
+  module_load_include('inc', 'be', 'be.block');
+  module_load_include('inc', 'be', 'be.callback');
+}
+
+/**
+ * Implements hook_menu().
+ */
+function be_menu() 
+{
+  $items['customer/%/%'] = array(
+    'access callback'   => TRUE,
+    'page callback'     => 'be_customer_object',
+    'page arguments'    => array(1, 2),
+    'delivery callback' => 'drupal_json_output'
+  );
+  $items['download/%'] = array(
+    'access callback'   => TRUE,
+    'page callback'     => 'be_files_downloading',
+    'page arguments'    => array(1),
+    'access arguments' => array('access content'),
+  );
+  
+  $items['box-for-devices'] = array(
+    'access callback'   => TRUE,
+    'page callback'     => 'be_box_for_devices',
+    'access arguments' => array('access content'),
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function be_theme() 
+{
+  return array(
+    'box_apps_devices' => array(
+      'variables' => array(
+        'curr_group' => null, 'device' => NULL, 'title' => null, 'node_language' => null, 'mobile_apps_in_desk' => FALSE, 'apps' => array()),
+      'template'  => 'box_apps_devices',
+      'path'      => drupal_get_path('module', 'be') . '/templates',
+    ),
+    'hero_banner' => array(
+      'template' => 'hero_banner',
+      'variables' => array('hero_banner' => null, 'custom_class' => null),
+      'path'      => drupal_get_path('module', 'be') . '/templates',
+    ),
+    'sub_navigation' => array(
+      'template' => 'sub_navigation',
+      'variables' => array('items' => null),
+      'path'      => drupal_get_path('module', 'be') . '/templates',
+    ),
+    'apps_other_devices' => array(
+      'template' => 'apps_other_devices',
+      'variables' => array('curr_group' => null, 'description' => null, 'node_language' => null),
+      'path'      => drupal_get_path('module', 'be') . '/templates',
+    ),
+    'more_apps_devices' => array(
+      'template' => 'more_apps_devices',
+      'variables' => array('title' => null, 'node_language' => null, 'apps' => array()),
+      'path'      => drupal_get_path('module', 'be') . '/templates',
+    )
+  );
+}
+
+/**
+ * Implements hook_page_build()
+ */
+function be_page_build(&$page)
+{
+  //check if 404
+  $status = drupal_get_http_header("Status");
+  if ($status == "404 Not Found") {
+    unset($_GET['destination']);
+    drupal_goto('https://app.box.com/' . current_path());
+  }
+}
+
+/**
+ * Implemen hook_pathologic_alter()
+ */
+function be_pathologic_alter(&$url_params, $parts, $settings) 
+{
+  //change the href="/" or href="" to default url of language en
+  if (empty($url_params['options']['language']) && $url_params['path'] == '<front>') {
+    $url_params['path'] = url('<front>', array('absolute' => true, 'language' => language_default()));
+    $url_params['options']['external'] = true;
+  }
+}
+
+/**
+ * Implements field_widget_form_alter()
+ */
+function be_field_widget_form_alter(&$element, &$form_state, $context){
+  if ($context['field']['type'] == 'entityreference') {
+    $options = $element['target_id']['#options'];
+    $arr_option = array();
+    $languages = language_list();
+    $language_codes = array_keys($languages);
+    $nodes = node_load_multiple(array_keys($options));
+    foreach($options as $nid=>$value){
+      if(!empty($nodes[$nid]->language) && in_array($nodes[$nid]->language, $language_codes)){
+        $arr_option[$languages[$nodes[$nid]->language]->name][$nid] = $value;
+      } else{
+        $arr_option[$nid] = $value;
+      }
+    }
+    $element['target_id']['#options'] = $arr_option;
+  }
+}
